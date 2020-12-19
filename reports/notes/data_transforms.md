@@ -1,1 +1,5 @@
-
+Problem statement
+Source data info
+Data Observations
+Preprocessing recommendations
+Supporting visualizations
