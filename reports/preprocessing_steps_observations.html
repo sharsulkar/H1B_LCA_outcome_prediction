@@ -1,0 +1,1170 @@
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Dtype</th>
+      <th>percent_missing</th>
+      <th>cardinality</th>
+      <th>preprocess_action</th>
+      <th>preprocess_comment</th>
+      <th>new_feature_name</th>
+      <th>new_feature_logic</th>
+      <th>Categorical class</th>
+      <th>embedding</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CASE_NUMBER</th>
+      <td>object</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Drop column</td>
+      <td>High Cardinality, threshold 80.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>CASE_STATUS</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.9975</td>
+      <td>Pop column into a separate list</td>
+      <td>Target feature</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Categorical</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>RECEIVED_DATE</th>
+      <td>datetime64[ns]</td>
+      <td>0</td>
+      <td>99.8976</td>
+      <td>Drop column</td>
+      <td>Feature engineering</td>
+      <td>PROCESSING_DAYS</td>
+      <td>days(DECISION_DATE-RECEIVED_DATE)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>DECISION_DATE</th>
+      <td>datetime64[ns]</td>
+      <td>0</td>
+      <td>99.944</td>
+      <td>Drop column</td>
+      <td>Feature engineering</td>
+      <td>PROCESSING_DAYS</td>
+      <td>days(DECISION_DATE-RECEIVED_DATE)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>ORIGINAL_CERT_DATE</th>
+      <td>datetime64[ns]</td>
+      <td>98.1651</td>
+      <td>99.9224</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>VISA_CLASS</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.9975</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Categorical</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>JOB_TITLE</th>
+      <td>object</td>
+      <td>0</td>
+      <td>68.938</td>
+      <td>Drop column</td>
+      <td>High Cardinality, threshold 80.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>SOC_CODE</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.5616</td>
+      <td>Drop column</td>
+      <td>Feature engineering</td>
+      <td>SOC_CODE_2,SOC_CODE_4</td>
+      <td>SOC_CODE.split('-')</td>
+      <td>Categorical</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>SOC_TITLE</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.5966</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Categorical</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>FULL_TIME_POSITION</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.9987</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Binary</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>BEGIN_DATE</th>
+      <td>datetime64[ns]</td>
+      <td>0</td>
+      <td>99.7792</td>
+      <td>Drop column</td>
+      <td>Feature engineering</td>
+      <td>VALIDITY_DAYS</td>
+      <td>days(END_DATE-BEGIN_DATE)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>END_DATE</th>
+      <td>datetime64[ns]</td>
+      <td>0</td>
+      <td>99.2282</td>
+      <td>Drop column</td>
+      <td>Feature engineering</td>
+      <td>VALIDITY_DAYS</td>
+      <td>days(END_DATE-BEGIN_DATE)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TOTAL_WORKER_POSITIONS</th>
+      <td>int64</td>
+      <td>0</td>
+      <td>99.9726</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NEW_EMPLOYMENT</th>
+      <td>int64</td>
+      <td>0</td>
+      <td>99.9739</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>CONTINUED_EMPLOYMENT</th>
+      <td>int64</td>
+      <td>0</td>
+      <td>99.9885</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>CHANGE_PREVIOUS_EMPLOYMENT</th>
+      <td>int64</td>
+      <td>0</td>
+      <td>99.9924</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NEW_CONCURRENT_EMPLOYMENT</th>
+      <td>int64</td>
+      <td>0</td>
+      <td>99.9962</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>CHANGE_EMPLOYER</th>
+      <td>int64</td>
+      <td>0</td>
+      <td>99.9911</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AMENDED_PETITION</th>
+      <td>int64</td>
+      <td>0</td>
+      <td>99.9924</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_NAME</th>
+      <td>object</td>
+      <td>0.000636242</td>
+      <td>83.2541</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Categorical</td>
+      <td>Standardized random for CONCAT(EMPLOYER_NAME,EMPLOYER_STATE)</td>
+    </tr>
+    <tr>
+      <th>TRADE_NAME_DBA</th>
+      <td>object</td>
+      <td>85.3639</td>
+      <td>97.4092</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_ADDRESS1</th>
+      <td>object</td>
+      <td>0</td>
+      <td>84.8002</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_ADDRESS2</th>
+      <td>object</td>
+      <td>54.4903</td>
+      <td>96.801</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_CITY</th>
+      <td>object</td>
+      <td>0</td>
+      <td>97.1197</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_STATE</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.965</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POSTAL_CODE</th>
+      <td>object</td>
+      <td>0</td>
+      <td>96.2742</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Categorical</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_COUNTRY</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.9987</td>
+      <td>Drop column</td>
+      <td>Feature engineering</td>
+      <td>USA_YN</td>
+      <td>IF EMPLOYER_COUNTRY==USA THEN Y ELSE N END</td>
+      <td>Binary</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_PROVINCE</th>
+      <td>object</td>
+      <td>91.0163</td>
+      <td>99.93</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_PHONE</th>
+      <td>int64</td>
+      <td>0</td>
+      <td>85.2646</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_PHONE_EXT</th>
+      <td>float64</td>
+      <td>92.9594</td>
+      <td>99.7334</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NAICS_CODE</th>
+      <td>int64</td>
+      <td>0</td>
+      <td>99.08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Categorical</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_LAST_NAME</th>
+      <td>object</td>
+      <td>0.00127248</td>
+      <td>89.1247</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_FIRST_NAME</th>
+      <td>object</td>
+      <td>0.0076349</td>
+      <td>93.5415</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_MIDDLE_NAME</th>
+      <td>object</td>
+      <td>82.0688</td>
+      <td>99.1742</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_JOB_TITLE</th>
+      <td>object</td>
+      <td>0</td>
+      <td>94.0301</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_ADDRESS1</th>
+      <td>object</td>
+      <td>0</td>
+      <td>84.4337</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_ADDRESS2</th>
+      <td>object</td>
+      <td>54.1524</td>
+      <td>96.5694</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_CITY</th>
+      <td>object</td>
+      <td>0</td>
+      <td>97.0307</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_STATE</th>
+      <td>object</td>
+      <td>0.0521718</td>
+      <td>99.9637</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_POSTAL_CODE</th>
+      <td>object</td>
+      <td>0</td>
+      <td>96.2665</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_COUNTRY</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.9917</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_PROVINCE</th>
+      <td>object</td>
+      <td>99.8136</td>
+      <td>99.9733</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_PHONE</th>
+      <td>int64</td>
+      <td>0</td>
+      <td>85.1107</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_PHONE_EXT</th>
+      <td>float64</td>
+      <td>92.5432</td>
+      <td>99.6113</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EMPLOYER_POC_EMAIL</th>
+      <td>object</td>
+      <td>1.83556</td>
+      <td>84.1888</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_REPRESENTING_EMPLOYER</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.9987</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Binary</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_LAST_NAME</th>
+      <td>object</td>
+      <td>25.4611</td>
+      <td>97.394</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_FIRST_NAME</th>
+      <td>object</td>
+      <td>25.4611</td>
+      <td>98.1473</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_MIDDLE_NAME</th>
+      <td>object</td>
+      <td>58.8333</td>
+      <td>98.823</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_ADDRESS1</th>
+      <td>object</td>
+      <td>25.4611</td>
+      <td>96.801</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_ADDRESS2</th>
+      <td>object</td>
+      <td>41.5167</td>
+      <td>95.9745</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_CITY</th>
+      <td>object</td>
+      <td>25.4611</td>
+      <td>99.2658</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_STATE</th>
+      <td>object</td>
+      <td>25.4611</td>
+      <td>99.9637</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_POSTAL_CODE</th>
+      <td>object</td>
+      <td>25.4611</td>
+      <td>98.5723</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_COUNTRY</th>
+      <td>object</td>
+      <td>25.4611</td>
+      <td>99.9968</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_PROVINCE</th>
+      <td>object</td>
+      <td>96.9918</td>
+      <td>99.9612</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_PHONE</th>
+      <td>float64</td>
+      <td>25.4611</td>
+      <td>97.8279</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_PHONE_EXT</th>
+      <td>float64</td>
+      <td>94.4889</td>
+      <td>99.8524</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGENT_ATTORNEY_EMAIL_ADDRESS</th>
+      <td>object</td>
+      <td>25.4999</td>
+      <td>95.8403</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>LAWFIRM_NAME_BUSINESS_NAME</th>
+      <td>object</td>
+      <td>25.4611</td>
+      <td>97.3233</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>STATE_OF_HIGHEST_COURT</th>
+      <td>object</td>
+      <td>25.5566</td>
+      <td>99.965</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>NAME_OF_HIGHEST_STATE_COURT</th>
+      <td>object</td>
+      <td>25.5629</td>
+      <td>99.192</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>WORKSITE_WORKERS</th>
+      <td>float64</td>
+      <td>0.00127248</td>
+      <td>99.972</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>SECONDARY_ENTITY</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.9987</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Binary</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>SECONDARY_ENTITY_BUSINESS_NAME</th>
+      <td>object</td>
+      <td>71.1439</td>
+      <td>90.0193</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>WORKSITE_ADDRESS1</th>
+      <td>object</td>
+      <td>0</td>
+      <td>61.8166</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>WORKSITE_ADDRESS2</th>
+      <td>object</td>
+      <td>74.5211</td>
+      <td>94.0938</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>WORKSITE_CITY</th>
+      <td>object</td>
+      <td>0.00254497</td>
+      <td>95.3586</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>WORKSITE_COUNTY</th>
+      <td>object</td>
+      <td>0.0470819</td>
+      <td>99.2028</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>WORKSITE_STATE</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.9644</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>WORKSITE_POSTAL_CODE</th>
+      <td>object</td>
+      <td>0</td>
+      <td>94.8204</td>
+      <td>Drop column</td>
+      <td>Feature engineering</td>
+      <td>EMPLOYER_WORKSITE_YN</td>
+      <td>IF EMPLOYER_POSTAL_CODE==WORKSITE_POSTAL_CODE THEN Y ELSE N END</td>
+      <td>Categorical</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>WAGE_RATE_OF_PAY_FROM</th>
+      <td>float64</td>
+      <td>0</td>
+      <td>84.017</td>
+      <td>Drop column</td>
+      <td>Feature engineering</td>
+      <td>WAGE_RATE_OF_PAY_FROM_HR;WAGE_ABOVE_PREVAILING_HR</td>
+      <td>if WAGE_UNIT_OF_PAY=Hour ignore, if Month then WAGE/172, if Year then WAGE/2067;WAGE_RATE_OF_PAY_FROM_HR-PREVAILING_WAGE_HR</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>WAGE_RATE_OF_PAY_TO</th>
+      <td>float64</td>
+      <td>66.3912</td>
+      <td>93.6179</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>WAGE_UNIT_OF_PAY</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.9968</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PREVAILING_WAGE</th>
+      <td>float64</td>
+      <td>0</td>
+      <td>92.2143</td>
+      <td>Drop column</td>
+      <td>Feature engineering</td>
+      <td>PREVAILING_WAGE_HR;WAGE_ABOVE_PREVAILING_HR</td>
+      <td>if PW_UNIT_OF_PAY=Hour ignore, if Month then WAGE/172, if Year then WAGE/2067;WAGE_RATE_OF_PAY_FROM_HR-PREVAILING_WAGE_HR</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PW_UNIT_OF_PAY</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.9968</td>
+      <td>Drop column</td>
+      <td>Not Useful</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PW_TRACKING_NUMBER</th>
+      <td>object</td>
+      <td>99.7875</td>
+      <td>99.8098</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PW_WAGE_LEVEL</th>
+      <td>object</td>
+      <td>5.48631</td>
+      <td>99.9968</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Ordinal</td>
+      <td>Standardized random in increasing order</td>
+    </tr>
+    <tr>
+      <th>PW_OES_YEAR</th>
+      <td>object</td>
+      <td>5.02567</td>
+      <td>99.9975</td>
+      <td>Drop column</td>
+      <td>Feature engineering</td>
+      <td>SURVEY_YEAR</td>
+      <td>if OES_YN ==Y then extract year from first date of PW_OES_YEAR else PW_OTHER_YEAR</td>
+      <td>Ordinal</td>
+      <td>Standardized random in increasing order</td>
+    </tr>
+    <tr>
+      <th>PW_OTHER_SOURCE</th>
+      <td>object</td>
+      <td>95.1856</td>
+      <td>99.9962</td>
+      <td>Drop column</td>
+      <td>Feature engineering</td>
+      <td>OES_YN</td>
+      <td>if PW_OTHER_SOURCE is not NaN then N else Y</td>
+      <td>Categorical</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>PW_OTHER_YEAR</th>
+      <td>float64</td>
+      <td>95.19</td>
+      <td>99.9943</td>
+      <td>Drop column</td>
+      <td>Feature engineering</td>
+      <td>SURVEY_YEAR</td>
+      <td>if OES_YN ==Y then extract year from first date of PW_OES_YEAR else PW_OTHER_YEAR</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PW_SURVEY_PUBLISHER</th>
+      <td>object</td>
+      <td>95.8733</td>
+      <td>99.6609</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PW_SURVEY_NAME</th>
+      <td>object</td>
+      <td>95.8759</td>
+      <td>99.2454</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>TOTAL_WORKSITE_LOCATIONS</th>
+      <td>float64</td>
+      <td>0.00127248</td>
+      <td>99.993</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>AGREE_TO_LC_STATEMENT</th>
+      <td>object</td>
+      <td>0</td>
+      <td>99.9994</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Binary</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>H-1B_DEPENDENT</th>
+      <td>object</td>
+      <td>2.14477</td>
+      <td>99.9981</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Binary</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>WILLFUL_VIOLATOR</th>
+      <td>object</td>
+      <td>2.14604</td>
+      <td>99.9981</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Binary</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>SUPPORT_H1B</th>
+      <td>object</td>
+      <td>73.2556</td>
+      <td>99.9981</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>STATUTORY_BASIS</th>
+      <td>object</td>
+      <td>73.4019</td>
+      <td>99.9975</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>APPENDIX_A_ATTACHED</th>
+      <td>object</td>
+      <td>99.8995</td>
+      <td>99.9987</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PUBLIC_DISCLOSURE</th>
+      <td>object</td>
+      <td>0.0286309</td>
+      <td>99.9975</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Categorical</td>
+      <td>Standardized random</td>
+    </tr>
+    <tr>
+      <th>PREPARER_LAST_NAME</th>
+      <td>object</td>
+      <td>48.4263</td>
+      <td>97.0109</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PREPARER_FIRST_NAME</th>
+      <td>object</td>
+      <td>48.4263</td>
+      <td>98.0716</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PREPARER_MIDDLE_INITIAL</th>
+      <td>object</td>
+      <td>76.7441</td>
+      <td>99.8918</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PREPARER_BUSINESS_NAME</th>
+      <td>object</td>
+      <td>46.828</td>
+      <td>97.6173</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>PREPARER_EMAIL</th>
+      <td>object</td>
+      <td>43.7505</td>
+      <td>96.7819</td>
+      <td>Drop column</td>
+      <td>missing values&gt;=40.0% of total</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
