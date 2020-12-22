@@ -36,11 +36,10 @@ This will replace the features - DECISION_DATE, RECIEVED_DATE.
 This will replace the features - DECISION_DATE, RECIEVED_DATE.  
 3. **SOC_CODE_2, SOC_CODE_4, SOC_CODE_ONET**  
 <span style="color:green">Reference</span> - https://en.wikipedia.org/wiki/Standard_Occupational_Classification_System  
-**Computation**SOC_CODE_2=SOC_CODE.split(\'-\')[0];  
+**Computation** - SOC_CODE_2=SOC_CODE.split(\'-\')[0];  
 SOC_CODE_4=SOC_CODE.split(\'-\')[1];  
 SOC_CODE_ONET=SOC_CODE.split(\'.\')[1];  
-**Reason** - SOC_CODE identifes the job being requested and is of the format AA_BBBB.CC. Splitting the various parts of the code might help tie outcomes to specific
-job roles, industries or specializations. Also encoding might be easier.  
+**Reason** - SOC_CODE identifes the job being requested and is of the format AA_BBBB.CC. Splitting the various parts of the code might help tie outcomes to specific job roles, industries or specializations. Also encoding might be easier.  
 4. **EMPLOYER_COUNTRY** -  
 **Computation** - IF EMPLOYER_COUNTRY==USA THEN Y ELSE N END  
 **Reason** - the country is almost always USA but very rarely not USA so this feature converts the Employer_country to a binary feature.  
