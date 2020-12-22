@@ -3,12 +3,7 @@
 **Background** - DHS programs for speciality occupation need to undergo Department of Labor (DOL) Certification to ensure the local workforce is not adverseley impacted due to 
 jobs offered to foreign workforce. LCA and PERM certifications are part of the DOL certifications legally required before the work application for foreign labor is approved.  
 This project will try to model the underlying process and provide solutions to below mentioned aspects of this process -  
-1. Exploratory Data Analysis to answer below questions -  
-    a. How has the outcome changed over the last 10 years?  
-    b. Are some employers, Soc_Codes, employer locations more prone to be denied vs approved?  
-    c. How has the geographical distribution of different programs changed over time?  
-    d. How has the distribution of different programs changed over Soc_codes?  
-    e. 
+1. Exploratory Data Analysis to answer questions mentioned in ./EDA_viz.md file.  
 2. Predict the outcome of a given application under the OFLC LCA or PERM programs (Separate models for each program).  
 3. Given the prediction, suggest what changes to the application parameters will most likely change the outcome.  
 4. Given the application parameters, what is the closest case-number in the last 3 years display its outcome.
