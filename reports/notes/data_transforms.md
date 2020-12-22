@@ -5,9 +5,9 @@ jobs offered to foreign workforce. LCA and PERM certifications are part of the D
 This project will try to model the underlying process and provide solutions to below mentioned aspects of this process -  
 1. Exploratory Data Analysis to answer below questions -  
     a. How has the outcome changed over the last 10 years?  
-    b. Are some employers, Soc_Codes, employer locations more prone to be denied vs approved?
-    c. How has the geographical distribution of different programs changed over time?
-    d. How has the distribution of different programs changed over Soc_codes?
+    b. Are some employers, Soc_Codes, employer locations more prone to be denied vs approved?  
+    c. How has the geographical distribution of different programs changed over time?  
+    d. How has the distribution of different programs changed over Soc_codes?  
     e. 
 2. Predict the outcome of a given application under the OFLC LCA or PERM programs (Separate models for each program).  
 3. Given the prediction, suggest what changes to the application parameters will most likely change the outcome.  
