@@ -31,3 +31,19 @@ Although the key feature columns tend to remain the same.
 #### Action items - done  
 --Add preprocessing step to remove rows that are not with CASE_STATUS Certified or Denied  
 LCA_df.drop(LCA_df[LCA_df.CASE_STATUS.isin(['Certified - Withdrawn', 'Withdrawn'])].index,inplace=True)  
+
+### 1/6/21 -  
+#### approx time spent - 3h  
+Today, working on prototyping the core functionality for **LCA data** for preprocessing data transforms noted in /notes/data_transforms.md. Also note down any additional preprocessing steps and testing or logging steps that 
+come to mind. Will need to do similar steps for PERM data later.  
+Instead of loading the entire dataset and then dropping columns that are not needed, it might be better to just load the required columns and set their datatypes during import. Dropping the columns that will be used for feature engineering 
+will be needed but atleast the list of columns to drop will be comparatively less.  
+Thinking of implementing the pipeline in below order -  
+1. Select required features and import with correct dtypes
+On filtering columns before import, the size of imported data frame reduced by >50%. On further thought and reading around, it might be ok to skip specifying correct Dtypes during import and all features are eventually going to be numeric at
+the end of the data_transforms step.
+2. Drop rows where CASE_STATUS not in ('Certified','Denied')
+3. Do feature engineering steps
+4. drop columns
+5. embed categorical columns, normalize numerical columns
+6. pop the target column into a separate list

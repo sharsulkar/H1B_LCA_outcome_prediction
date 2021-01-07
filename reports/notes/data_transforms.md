@@ -14,7 +14,7 @@ Data will be sourced from publicly disclosed data on the below website -
 
 ## Data Observations for LCA based programs (Separate but similar steps needed for PERM program)  
 ### Preprocessing recommendations  
-1. Reduce Dataframe space by using appropriate datatypes.
+1. Reduce Dataframe space by using appropriate datatypes. Only import columns that are required.
 2. The output class is unbalanced. Consider it during training, selecting evaluation metrics.
 3. Missing values - Drop columns that have more than 40% missing values.
 4. Cardinality - Drop columns that have more than 80% of its total values as unique.
