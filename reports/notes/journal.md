@@ -1,9 +1,16 @@
 ## Journal to store day-to-day notes, important observations, thoughts and misc.  
+### 1/8/21 -
+#### approx time spent - 3h 
+Sidenote - Gitpod.io has a 50hr/month usage limit for free mode so did not want to waste it on editing notes and documents. Found and moved to dillinger.io for editing .md documents for this project. Looks like a simple online md editor which I can use from anywhere to edit and syncup notes and documents from github, will give it a try and hope it works.  
+
+##### Today I Learned -
+1. Dataframe column can be updated using a series object using df.update(series) if the series and column name to be updated have the same name.
+2. Pandas has a to_datetime method to convert a column into datetime. individual parts of datetime can then be extracted using the .dt.tp_period('D'/'M'/'Y').
+3. 
 
 ### 1/7/21 -  
 #### approx time spent - 2.5h  
 Continued working on coding the core functionality in python for **LCA data**. Almost finished coding the core functionality of the feature engineering steps, still 1-2 features have to be implemented.  
-
 
 ### 1/6/21 -  
 #### approx time spent - 3h  
