@@ -47,3 +47,7 @@ the end of the data_transforms step.
 4. drop columns
 5. embed categorical columns, normalize numerical columns
 6. pop the target column into a separate list
+
+### 1/7/21 -  
+#### approx time spent - 2.5h  
+Continued working on coding the core functionality in python for **LCA data**. Almost finished coding the core functionality of the feature engineering steps, still 1-2 features have to be implemented.  
