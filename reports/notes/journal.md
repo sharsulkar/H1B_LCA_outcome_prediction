@@ -3,10 +3,12 @@
 #### approx time spent - 3h 
 Sidenote - Gitpod.io has a 50hr/month usage limit for free mode so did not want to waste it on editing notes and documents. Found and moved to dillinger.io for editing .md documents for this project. Looks like a simple online md editor which I can use from anywhere to edit and syncup notes and documents from github, will give it a try and hope it works.  
 
+Finished coding for SURVEY_YEAR and WAGE_ABOVE_PW_HR features. Before moving to feature encoding, I think it is better to add/update the preprocessing_steps_observations.csv filling in details with the new features engineered and also what type of encoding will suit best. This way, the preprocessing_steps_observations.csv can be a central location to record and reuse all actions taken in the preprocessing steps.  
+
 ##### Today I Learned -
 1. Dataframe column can be updated using a series object using df.update(series) if the series and column name to be updated have the same name.
 2. Pandas has a to_datetime method to convert a column into datetime. individual parts of datetime can then be extracted using the .dt.tp_period('D'/'M'/'Y').
-3. 
+3. pd.apply only works if applied on a single df column. for more than 1 columns, its easier to update index-wise.
 
 ### 1/7/21 -  
 #### approx time spent - 2.5h  
