@@ -24,7 +24,7 @@ EMPLOYER_ADDRESS1$object$0$84.8001883275117$Drop column$Not Useful$$$$
 EMPLOYER_ADDRESS2$object$54.4902750472409$96.8009772670879$Drop column$Not Useful$$$$
 EMPLOYER_CITY$object$0$97.1197343055105$Drop column$Not Useful$$$$
 EMPLOYER_STATE$object$0$99.9650067123488$Drop column$Not Useful$$$$
-EMPLOYER_POSTAL_CODE$object$0$96.2741692275391$$$$$Categorical$Standardized random
+EMPLOYER_POSTAL_CODE$object$0$96.2741692275391$Drop column$Feature engineering$EMPLOYER_WORKSITE_YN$IF EMPLOYER_POSTAL_CODE==WORKSITE_POSTAL_CODE THEN Y ELSE N END$Categorical$Standardized random
 EMPLOYER_COUNTRY$object$0$99.9987275168127$Drop column$Feature engineering$USA_YN$IF EMPLOYER_COUNTRY==USA THEN Y ELSE N END$Binary$Standardized random
 EMPLOYER_PROVINCE$object$91.0162686975498$99.9300134246976$Drop column$Not Useful$$$$
 EMPLOYER_PHONE$int64$0$85.264644690882$Drop column$Not Useful$$$$
@@ -72,9 +72,9 @@ WORKSITE_STATE$object$0$99.9643704707552$Drop column$Not Useful$$$$
 WORKSITE_POSTAL_CODE$object$0$94.8203571860307$Drop column$Feature engineering$EMPLOYER_WORKSITE_YN$IF EMPLOYER_POSTAL_CODE==WORKSITE_POSTAL_CODE THEN Y ELSE N END$Categorical$Standardized random
 WAGE_RATE_OF_PAY_FROM$float64$0$84.0169749257188$Drop column$Feature engineering$WAGE_RATE_OF_PAY_FROM_HR;WAGE_ABOVE_PREVAILING_HR$if WAGE_UNIT_OF_PAY=Hour ignore, if Month then WAGE/172, if Year then WAGE/2067;WAGE_RATE_OF_PAY_FROM_HR-PREVAILING_WAGE_HR$$
 WAGE_RATE_OF_PAY_TO$float64$66.3911740566128$93.6178605740172$Drop column$missing values>=40.0% of total$$$$
-WAGE_UNIT_OF_PAY$object$0$99.9968187920317$Drop column$Not Useful$$$$
+WAGE_UNIT_OF_PAY$object$0$99.9968187920317$Drop column$Feature engineering$PREVAILING_WAGE_HR;WAGE_ABOVE_PREVAILING_HR$$$
 PREVAILING_WAGE$float64$0$92.2143116184077$Drop column$Feature engineering$PREVAILING_WAGE_HR;WAGE_ABOVE_PREVAILING_HR$if PW_UNIT_OF_PAY=Hour ignore, if Month then WAGE/172, if Year then WAGE/2067;WAGE_RATE_OF_PAY_FROM_HR-PREVAILING_WAGE_HR$$
-PW_UNIT_OF_PAY$object$0$99.9968187920317$Drop column$Not Useful$$$$
+PW_UNIT_OF_PAY$object$0$99.9968187920317$Drop column$Feature engineering$PREVAILING_WAGE_HR;WAGE_ABOVE_PREVAILING_HR$$$
 PW_TRACKING_NUMBER$object$99.7874953077183$99.8097637634963$Drop column$missing values>=40.0% of total$$$$
 PW_WAGE_LEVEL$object$5.48631126211245$99.9968187920317$$$$$Ordinal$Standardized random in increasing order
 PW_OES_YEAR$object$5.0256723483041$99.9974550336254$Drop column$Feature engineering$SURVEY_YEAR $if OES_YN ==Y then extract year from first date of PW_OES_YEAR else PW_OTHER_YEAR$Ordinal$Standardized random in increasing order
