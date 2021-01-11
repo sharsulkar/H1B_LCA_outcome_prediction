@@ -1,4 +1,11 @@
 ## Journal to store day-to-day notes, important observations, thoughts and misc.  
+### 1/11/21 -
+#### approx time spent - h 
+Today I want to finish the below tasks -
+1. Embedding all features
+2. Create a prototype feature transform pipeline
+3. Apply pipeline to all 2020 dataset
+
 ### 1/8/21 -
 #### approx time spent - 3h 
 Sidenote - Gitpod.io has a 50hr/month usage limit for free mode so did not want to waste it on editing notes and documents. Found and moved to dillinger.io for editing .md documents for this project. Looks like a simple online md editor which I can use from anywhere to edit and syncup notes and documents from github, will give it a try and hope it works.  
