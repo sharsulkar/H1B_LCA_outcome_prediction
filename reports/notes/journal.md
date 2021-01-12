@@ -1,10 +1,20 @@
 ## Journal to store day-to-day notes, important observations, thoughts and misc.  
-### 1/11/21 -
-#### approx time spent - h 
+### 1/12/21 -
+#### approx time spent - 4h 
+Separated the pipeline prototype code into its own notebook. The code depeloped to build feature will be used in the pipeline so the output of 02_sh_build_features that I care about is actually the observations_df, so saved it as final_observations.csv with a $ delimiter. While refactoring, I will also need to create a code to generate the observations_df in case the file generate during protoyping is deleted.  
+
+For categorical encoding, I am using the custom built random standard_normal encoder because the sklearn encoders like onehotencoder, labelencoder do not serve my purpose. I will explain more in the detailed notes. One functionality that I will have to work on for this custom encoder is a notification mechanism when categorical values that are not part of training encoding are found during the transform. Like any other categorical encoder, this will fail so an early notification will be helpful. In addition to that, I will need to think on how to handle when this happens. 
+
 Today I want to finish the below tasks -
-1. Embedding all features
-2. Create a prototype feature transform pipeline
-3. Apply pipeline to all 2020 dataset
+1. Encoding all features - done
+2. Class for feature engineering that can go into the pipeline - done
+3. Create a prototype feature transform pipeline - almost done
+4. Save the processed dataset, encoding parameters and pipeline object
+5. Start thinking on steps for refactoring and documentation.
+
+### 1/11/21 -
+#### approx time spent - 4h 
+Finished the code for all feature engineering. Worked on streamlining and updating the observations_df to include newly engineered features. Started working on encoding categorical and numerical features and building the pipeline. 
 
 ### 1/8/21 -
 #### approx time spent - 3h 
