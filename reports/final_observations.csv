@@ -1,0 +1,107 @@
+$Dtype$percent_missing$cardinality$preprocess_action$preprocess_comment$new_feature_name$new_feature_logic$Categorical class$embedding
+CASE_NUMBER$object$0.0$0.0$Drop column$High Cardinality, threshold 80.0% of total$$$$
+CASE_STATUS$object$0.0$99.99745503362541$Pop column into a separate list$Target feature$$$Categorical$Standardized random
+RECEIVED_DATE$datetime64[ns]$0.0$99.8975651034211$Drop column$Feature engineering$PROCESSING_DAYS$days(DECISION_DATE-RECEIVED_DATE)$$
+DECISION_DATE$datetime64[ns]$0.0$99.94401073975808$Drop column$Feature engineering$PROCESSING_DAYS$days(DECISION_DATE-RECEIVED_DATE)$$
+ORIGINAL_CERT_DATE$datetime64[ns]$98.16507924389049$99.9223785255737$Drop column$missing values>=40.0% of total$$$$
+VISA_CLASS$object$0.0$99.99745503362541$Use feature as is$$$$Categorical$Standardized random
+JOB_TITLE$object$0.0$68.9380491560255$Drop column$High Cardinality, threshold 80.0% of total$$$$
+SOC_CODE$object$0.0$99.5616295419697$Drop column$Feature engineering$SOC_CODE_2,SOC_CODE_4$SOC_CODE.split('-')$Categorical$Standardized random
+SOC_TITLE$object$0.0$99.59662282962091$Use feature as is$$$$Categorical$Standardized random
+FULL_TIME_POSITION$object$0.0$99.9987275168127$Use feature as is$$$$Binary$Standardized random
+BEGIN_DATE$datetime64[ns]$0.0$99.77922416700069$Drop column$Feature engineering$VALIDITY_DAYS$days(END_DATE-BEGIN_DATE)$$
+END_DATE$datetime64[ns]$0.0$99.22823894689292$Drop column$Feature engineering$VALIDITY_DAYS$days(END_DATE-BEGIN_DATE)$$
+TOTAL_WORKER_POSITIONS$int64$0.0$99.9726416114727$Use feature as is$$$$Numerical$Standard scaling
+NEW_EMPLOYMENT$int64$0.0$99.97391409466$Use feature as is$$$$Numerical$Standard scaling
+CONTINUED_EMPLOYMENT$int64$0.0$99.9885476513142$Use feature as is$$$$Numerical$Standard scaling
+CHANGE_PREVIOUS_EMPLOYMENT$int64$0.0$99.9923651008761$Use feature as is$$$$Numerical$Standard scaling
+NEW_CONCURRENT_EMPLOYMENT$int64$0.0$99.99618255043801$Use feature as is$$$$Numerical$Standard scaling
+CHANGE_EMPLOYER$int64$0.0$99.99109261768879$Use feature as is$$$$Numerical$Standard scaling
+AMENDED_PETITION$int64$0.0$99.9923651008761$Use feature as is$$$$Numerical$Standard scaling
+EMPLOYER_NAME$object$0.000636241593658$83.25412125492291$Use feature as is$$$$Categorical$Standardized random for CONCAT(EMPLOYER_NAME,EMPLOYER_STATE)
+TRADE_NAME_DBA$object$85.3638983794927$97.4092242306249$Drop column$Not Useful$$$$
+EMPLOYER_ADDRESS1$object$0.0$84.8001883275117$Drop column$Not Useful$$$$
+EMPLOYER_ADDRESS2$object$54.4902750472409$96.8009772670879$Drop column$Not Useful$$$$
+EMPLOYER_CITY$object$0.0$97.1197343055105$Drop column$Not Useful$$$$
+EMPLOYER_STATE$object$0.0$99.96500671234881$Drop column$Not Useful$$$$
+EMPLOYER_POSTAL_CODE$object$0.0$96.2741692275391$Drop column$Feature engineering$EMPLOYER_WORKSITE_YN$IF EMPLOYER_POSTAL_CODE==WORKSITE_POSTAL_CODE THEN Y ELSE N END$Categorical$Standardized random
+EMPLOYER_COUNTRY$object$0.0$99.9987275168127$Drop column$Feature engineering$USA_YN$IF EMPLOYER_COUNTRY==USA THEN Y ELSE N END$Binary$Standardized random
+EMPLOYER_PROVINCE$object$91.0162686975498$99.93001342469759$Drop column$Not Useful$$$$
+EMPLOYER_PHONE$int64$0.0$85.264644690882$Drop column$Not Useful$$$$
+EMPLOYER_PHONE_EXT$float64$92.9593505245812$99.73341477225729$Drop column$Not Useful$$$$
+NAICS_CODE$int64$0.0$99.0799946555706$Use feature as is$$$$Categorical$Standardized random
+EMPLOYER_POC_LAST_NAME$object$0.001272483187316$89.1247224396048$Drop column$Not Useful$$$$
+EMPLOYER_POC_FIRST_NAME$object$0.007634899123895001$93.5415115827782$Drop column$Not Useful$$$$
+EMPLOYER_POC_MIDDLE_NAME$object$82.0688031659382$99.174158411432$Drop column$Not Useful$$$$
+EMPLOYER_POC_JOB_TITLE$object$0.0$94.0301451267075$Drop column$Not Useful$$$$
+EMPLOYER_POC_ADDRESS1$object$0.0$84.43371316956471$Drop column$Not Useful$$$$
+EMPLOYER_POC_ADDRESS2$object$54.1524307610086$96.5693853269964$Drop column$Not Useful$$$$
+EMPLOYER_POC_CITY$object$0.0$97.03066048239842$Drop column$Not Useful$$$$
+EMPLOYER_POC_STATE$object$0.05217181067995099$99.96373422916149$Drop column$Not Useful$$$$
+EMPLOYER_POC_POSTAL_CODE$object$0.0$96.2665343284152$Drop column$Not Useful$$$$
+EMPLOYER_POC_COUNTRY$object$0.0$99.9917288592824$Drop column$Not Useful$$$$
+EMPLOYER_POC_PROVINCE$object$99.8135812130582$99.9732778530664$Drop column$Not Useful$$$$
+EMPLOYER_POC_PHONE$int64$0.0$85.1106742252168$Drop column$Not Useful$$$$
+EMPLOYER_POC_PHONE_EXT$float64$92.54324852232891$99.611256386275$Drop column$Not Useful$$$$
+EMPLOYER_POC_EMAIL$object$1.8355569977031698$84.18876015600641$Drop column$Not Useful$$$$
+AGENT_REPRESENTING_EMPLOYER$object$0.0$99.9987275168127$Use feature as is$$$$Binary$Standardized random
+AGENT_ATTORNEY_LAST_NAME$object$25.4611160950036$97.39395443237709$Drop column$Not Useful$$$$
+AGENT_ATTORNEY_FIRST_NAME$object$25.4611160950036$98.14726447926809$Drop column$Not Useful$$$$
+AGENT_ATTORNEY_MIDDLE_NAME$object$58.8332601655501$98.82295305173278$Drop column$Not Useful$$$$
+AGENT_ATTORNEY_ADDRESS1$object$25.4611160950036$96.8009772670879$Drop column$Not Useful$$$$
+AGENT_ATTORNEY_ADDRESS2$object$41.51667271096179$95.97449943692621$Drop column$Not Useful$$$$
+AGENT_ATTORNEY_CITY$object$25.4611160950036$99.2657772009187$Drop column$Not Useful$$$$
+AGENT_ATTORNEY_STATE$object$25.4611160950036$99.96373422916149$Drop column$Not Useful$$$$
+AGENT_ATTORNEY_POSTAL_CODE$object$25.4611160950036$98.5722738638316$Drop column$Not Useful$$$$
+AGENT_ATTORNEY_COUNTRY$object$25.4611160950036$99.9968187920317$Drop column$Not Useful$$$$
+AGENT_ATTORNEY_PROVINCE$object$96.9918497451853$99.9611892627869$Drop column$Not Useful$$$$
+AGENT_ATTORNEY_PHONE$float64$25.4611160950036$97.8278711992518$Drop column$Not Useful$$$$
+AGENT_ATTORNEY_PHONE_EXT$float64$94.4888753157349$99.85239195027141$Drop column$Not Useful$$$$
+AGENT_ATTORNEY_EMAIL_ADDRESS$object$25.4999268322167$95.8402524606644$Drop column$Not Useful$$$$
+LAWFIRM_NAME_BUSINESS_NAME$object$25.4611160950036$97.323331615481$Drop column$Not Useful$$$$
+STATE_OF_HIGHEST_COURT$object$25.556552334052302$99.96500671234881$Drop column$Not Useful$$$$
+NAME_OF_HIGHEST_STATE_COURT$object$25.5629147499889$99.1919731760544$Drop column$Not Useful$$$$
+WORKSITE_WORKERS$float64$0.001272483187316$99.9720053698791$Use feature as is$$$$Numerical$Standard scaling
+SECONDARY_ENTITY$object$0.0$99.9987275168127$Use feature as is$$$$Binary$Standardized random
+SECONDARY_ENTITY_BUSINESS_NAME$object$71.1438987612376$90.0192781202878$Drop column$Not Useful$$$$
+WORKSITE_ADDRESS1$object$0.0$61.816596998212205$Drop column$Not Useful$$$$
+WORKSITE_ADDRESS2$object$74.521069140374$94.0937692860733$Drop column$Not Useful$$$$
+WORKSITE_CITY$object$0.002544966374632$95.3586175742653$Drop column$Not Useful$$$$
+WORKSITE_COUNTY$object$0.04708187793068799$99.20278928314659$Drop column$Not Useful$$$$
+WORKSITE_STATE$object$0.0$99.9643704707552$Drop column$Not Useful$$$$
+WORKSITE_POSTAL_CODE$object$0.0$94.8203571860307$Drop column$Feature engineering$EMPLOYER_WORKSITE_YN$IF EMPLOYER_POSTAL_CODE==WORKSITE_POSTAL_CODE THEN Y ELSE N END$Categorical$Standardized random
+WAGE_RATE_OF_PAY_FROM$float64$0.0$84.0169749257188$Drop column$Feature engineering$WAGE_RATE_OF_PAY_FROM_HR;WAGE_ABOVE_PREVAILING_HR$if WAGE_UNIT_OF_PAY=Hour ignore, if Month then WAGE/172, if Year then WAGE/2067;WAGE_RATE_OF_PAY_FROM_HR-PREVAILING_WAGE_HR$$
+WAGE_RATE_OF_PAY_TO$float64$66.3911740566128$93.6178605740172$Drop column$missing values>=40.0% of total$$$$
+WAGE_UNIT_OF_PAY$object$0.0$99.9968187920317$Drop column$Feature engineering$PREVAILING_WAGE_HR;WAGE_ABOVE_PREVAILING_HR$$$
+PREVAILING_WAGE$float64$0.0$92.2143116184077$Drop column$Feature engineering$PREVAILING_WAGE_HR;WAGE_ABOVE_PREVAILING_HR$if PW_UNIT_OF_PAY=Hour ignore, if Month then WAGE/172, if Year then WAGE/2067;WAGE_RATE_OF_PAY_FROM_HR-PREVAILING_WAGE_HR$$
+PW_UNIT_OF_PAY$object$0.0$99.9968187920317$Drop column$Feature engineering$PREVAILING_WAGE_HR;WAGE_ABOVE_PREVAILING_HR$$$
+PW_TRACKING_NUMBER$object$99.7874953077183$99.8097637634963$Drop column$missing values>=40.0% of total$$$$
+PW_WAGE_LEVEL$object$5.486311262112451$99.9968187920317$Use feature as is$$$$Ordinal$Standardized random in increasing order
+PW_OES_YEAR$object$5.0256723483040995$99.99745503362541$Drop column$Feature engineering$SURVEY_YEAR $if OES_YN ==Y then extract year from first date of PW_OES_YEAR else PW_OTHER_YEAR$Ordinal$Standardized random in increasing order
+PW_OTHER_SOURCE$object$95.18555986079029$99.99618255043801$Drop column$Feature engineering$OES_YN $if PW_OTHER_SOURCE is not NaN then N else Y$Categorical$Standardized random
+PW_OTHER_YEAR$float64$95.19001355194591$99.9942738256571$Drop column$Feature engineering$SURVEY_YEAR $if OES_YN ==Y then extract year from first date of PW_OES_YEAR else PW_OTHER_YEAR$$
+PW_SURVEY_PUBLISHER$object$95.8733370235346$99.6608832305803$Drop column$missing values>=40.0% of total$$$$
+PW_SURVEY_NAME$object$95.8758819899092$99.2454174699217$Drop column$missing values>=40.0% of total$$$$
+TOTAL_WORKSITE_LOCATIONS$float64$0.001272483187316$99.99300134246978$Use feature as is$$$$Numerical$Standard scaling
+AGREE_TO_LC_STATEMENT$object$0.0$99.9993637584064$Use feature as is$$$$Binary$Standardized random
+H-1B_DEPENDENT$object$2.1447704122209297$99.998091275219$Use feature as is$$$$Binary$Standardized random
+WILLFUL_VIOLATOR$object$2.14604289540824$99.998091275219$Use feature as is$$$$Binary$Standardized random
+SUPPORT_H1B$object$73.25558461058829$99.998091275219$Drop column$missing values>=40.0% of total$$$$
+STATUTORY_BASIS$object$73.40192017712971$99.99745503362541$Drop column$missing values>=40.0% of total$$$$
+APPENDIX_A_ATTACHED$object$99.89947382820209$99.9987275168127$Drop column$missing values>=40.0% of total$$$$
+PUBLIC_DISCLOSURE$object$0.028630871714608$99.99745503362541$Use feature as is$$$$Categorical$Standardized random
+PREPARER_LAST_NAME$object$48.4262564180871$97.010936992995$Drop column$missing values>=40.0% of total$$$$
+PREPARER_FIRST_NAME$object$48.4262564180871$98.0715517296228$Drop column$missing values>=40.0% of total$$$$
+PREPARER_MIDDLE_INITIAL$object$76.7440972686148$99.8918389290781$Drop column$missing values>=40.0% of total$$$$
+PREPARER_BUSINESS_NAME$object$46.828017534818294$97.61727523175101$Drop column$missing values>=40.0% of total$$$$
+PREPARER_EMAIL$object$43.750516946294795$96.7818900192781$Drop column$missing values>=40.0% of total$$$$
+PROCESSING_DAYS$timedelta64[ns]$0.0$99.9914019458058$New feature$Feature engineering$$$Numerical$Standard scaling
+VALIDITY_DAYS$timedelta64[ns]$0.0$99.31546260838509$New feature$Feature engineering$$$Numerical$Standard scaling
+SOC_CD2$object$0.0$99.98544944674828$New feature$Feature engineering$$$Categorical$Standardized random
+SOC_CD4$object$0.0$99.8763202973604$New feature$Feature engineering$$$Categorical$Standardized random
+SOC_CD_ONET$object$1.4239700523158527$99.99007916823747$New feature$Feature engineering$$$Categorical$Standardized random
+USA_YN$object$0.0$99.99867722243167$New feature$Feature engineering$$$Binary$Standardized random
+EMPLOYER_WORKSITE_YN$object$0.0$99.99867722243167$New feature$Feature engineering$$$Binary$Standardized random
+OES_YN$object$0.0$99.99867722243167$New feature$Feature engineering$$$Binary$Standardized random
+SURVEY_YEAR$object$0.19973941281903743$99.9933861121583$New feature$Feature engineering$$$Ordinal$Ordered standardized random
+WAGE_ABOVE_PW_HR$float64$0.0$69.88167754651217$New feature$Feature engineering$$$Numerical$Standard scaling
