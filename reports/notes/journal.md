@@ -1,4 +1,17 @@
 ## Journal to store day-to-day notes, important observations, thoughts and misc.  
+### 1/13/21 -
+#### approx time spent - 3h 
+The training and prediction pipelines will have to be different. Although the preprocess steps are exactly same, the training pipeline will have additional steps of removing rows where CASE_STATUS.notin('Certified','Denied') and separating the target column. 
+During building the pipeline i am getting an error for new features saying they are missing from the dataframe, which is correct but the intention of the pipeline is to execute steps in given order. The features will be available when the feature_engineering step is executed. Instead of spending time trying to fix this issue, I am more inclined to skip using the pipeline and add all the transform logic into build_features.py file. In a way, it will work as a pipeline too.
+Nevermind my above comment, I am able to use the pipeline feature by splitting the feature engineering step into its own pipeline and applying that to the dataframe before hand.
+
+Pickled and saved the pipeline object. Saved the transformed dataset on google drive. I dont know if github will allow to store datasets >50MB, else google drive might be a good place and I will just store the link to dataset in github.
+
+Today I want to finish the below tasks -
+1. All prototyping for transform pipeline - done
+2. refactoring and documentation plan
+3. how to write better prototyping code so refactoring takes as little time as possible
+
 ### 1/12/21 -
 #### approx time spent - 4h 
 Separated the pipeline prototype code into its own notebook. The code depeloped to build feature will be used in the pipeline so the output of 02_sh_build_features that I care about is actually the observations_df, so saved it as final_observations.csv with a $ delimiter. While refactoring, I will also need to create a code to generate the observations_df in case the file generate during protoyping is deleted.  
