@@ -1,16 +1,19 @@
 ## Journal to store day-to-day notes, important observations, thoughts and misc.  
 ### 1/13/21 -
-#### approx time spent - 3h 
+#### approx time spent - 4h 
 The training and prediction pipelines will have to be different. Although the preprocess steps are exactly same, the training pipeline will have additional steps of removing rows where CASE_STATUS.notin('Certified','Denied') and separating the target column. 
 During building the pipeline i am getting an error for new features saying they are missing from the dataframe, which is correct but the intention of the pipeline is to execute steps in given order. The features will be available when the feature_engineering step is executed. Instead of spending time trying to fix this issue, I am more inclined to skip using the pipeline and add all the transform logic into build_features.py file. In a way, it will work as a pipeline too.
 Nevermind my above comment, I am able to use the pipeline feature by splitting the feature engineering step into its own pipeline and applying that to the dataframe before hand.
 
 Pickled and saved the pipeline object. Saved the transformed dataset on google drive. I dont know if github will allow to store datasets >50MB, else google drive might be a good place and I will just store the link to dataset in github.
 
-Today I want to finish the below tasks -
-1. All prototyping for transform pipeline - done
-2. refactoring and documentation plan
-3. how to write better prototyping code so refactoring takes as little time as possible
+I think I will write a separate code to generate the observations_df (not necessarily refactored code, just a cleaned version of prototype code is fine). /reports/ will be a good place to store it and showcase it as part of the final report. I also think it will be a good idea to persist the various set of columns as they will remain constant once finalized (eg numeric, categorical, feature engineering, required, drop features). /data/processed folder will be a good place to store them.
+
+**How to write better prototyping code so refactoring takes as little time as possible**  
+1. Use Pep8 style and appropriate names that can be carried forward in the final code without change
+2. Add comments where needed
+3. Add notes on tests, error and exception handling in the prototype code
+4. Code for better performance in production
 
 ### 1/12/21 -
 #### approx time spent - 4h 
