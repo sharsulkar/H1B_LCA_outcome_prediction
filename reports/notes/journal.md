@@ -1,7 +1,9 @@
 ## Journal to store day-to-day notes, important observations, thoughts and misc.  
 ### 1/15/21 -
 #### approx time spent - 5h 
-
+Moved the preprocessing transformer classes to seperate files that can be reused and imported.  
+The code to generate the observations_df and columns can be part of the make_dataset.py file as it is in a way essential to processing the data. 
+Based on the how the training and test dataset should be built, that code will also be part of this file. 
 
 Today I want to finish below tasks -
 1. refactoring all preprocessing code, make preprocess transform classes reusable
@@ -10,7 +12,7 @@ Today I want to finish below tasks -
 4. documentation - doc strings
 
 ### 1/13/21 -
-#### approx time spent - 4h 
+#### approx time spent - 5h 
 The training and prediction pipelines will have to be different. Although the preprocess steps are exactly same, the training pipeline will have additional steps of removing rows where CASE_STATUS.notin('Certified','Denied') and separating the target column. 
 During building the pipeline i am getting an error for new features saying they are missing from the dataframe, which is correct but the intention of the pipeline is to execute steps in given order. The features will be available when the feature_engineering step is executed. Instead of spending time trying to fix this issue, I am more inclined to skip using the pipeline and add all the transform logic into build_features.py file. In a way, it will work as a pipeline too.
 Nevermind my above comment, I am able to use the pipeline feature by splitting the feature engineering step into its own pipeline and applying that to the dataframe before hand.
