@@ -1,4 +1,14 @@
 ## Journal to store day-to-day notes, important observations, thoughts and misc.  
+### 1/15/21 -
+#### approx time spent - 5h 
+
+
+Today I want to finish below tasks -
+1. refactoring all preprocessing code, make preprocess transform classes reusable
+2. write separate code for rebuilding observations_df and saving the columns
+3. note down test cases
+4. documentation - doc strings
+
 ### 1/13/21 -
 #### approx time spent - 4h 
 The training and prediction pipelines will have to be different. Although the preprocess steps are exactly same, the training pipeline will have additional steps of removing rows where CASE_STATUS.notin('Certified','Denied') and separating the target column. 
