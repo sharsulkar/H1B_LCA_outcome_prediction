@@ -5,11 +5,16 @@ Moved the preprocessing transformer classes to seperate files that can be reused
 The code to generate the observations_df and columns can be part of the make_dataset.py file as it is in a way essential to processing the data. 
 Based on the how the training and test dataset should be built, that code will also be part of this file. 
 
+Added docstring to the prototype code. I think there is no need to have a prototype and final version of the python code. One the prototype code is ready and working in the notebooks,
+I can start building the final code directly.
+
+Need to work on the ML ops steps to automate docstring updates, linting, code coverage, execute tests before commiting.
+
 Today I want to finish below tasks -
-1. refactoring all preprocessing code, make preprocess transform classes reusable
+1. refactoring all preprocessing code, make preprocess transform classes reusable - need to implement error handling and logging
 2. write separate code for rebuilding observations_df and saving the columns
 3. note down test cases
-4. documentation - doc strings
+4. documentation - doc strings - done
 
 ### 1/13/21 -
 #### approx time spent - 5h 

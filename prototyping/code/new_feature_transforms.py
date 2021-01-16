@@ -4,61 +4,48 @@ from sklearn.base import BaseEstimator, TransformerMixin
 
 #build features
 class BuildFeaturesTransformer(BaseEstimator, TransformerMixin):
-    '''
-    A class to build new features.
-    ...
+    """
+    A class to build new features. 
 
-    Attributes
-    ----------
-    input_columns : array or list
-        The columns that will be used as input for building new features.
+    Args:
+        input_columns (array or list) : The columns that will be used as input for building new features.
 
-    Methods
-    -------
-    date_diff(date1,date2):
-        Returns the difference between two input dates as timedelta.
-    is_usa(country):
-        Checks whether country is 'UNITED STATES OF AMERICA' or not and returns a binary flag
-    fit(X, y=None):
-        Fit the class on input dataframe
-    transform(X, y=None):
-        Apply transforms on the input dataframe to build new features
-    '''
-
+    Returns:
+        DataFrame : Transformed dataframe with new features added in as columns
+    """ 
     def __init__(self, input_columns):
         """
         Constructs all the necessary attributes for the BuildFeaturesTransformer object.
 
-        Parameters:
-            input_columns : array or list
-                The columns that will be used as input for building new features.
+        Args:
+            input_columns (array or list) : The columns that will be used as input for building new features.
         """
         self.input_columns=input_columns
 
     def date_diff(self,date1,date2):
-        '''
+        """
         Returns the difference between two input dates as timedelta.
 
-            Parameters:
-                date1 (datetime): A date
-                date2 (datetime): Another date
+        Args:
+            date1 (datetime): A date
+            date2 (datetime): Another date
 
-            Returns:
-                date_difference (timedelta): difference between date1 and date2
-        '''
+        Returns:
+            date_difference (timedelta): difference between date1 and date2
+        """
         date_difference=date1-date2
         return date_difference
 
     def is_usa(self,country):
-        '''
+        """
         Checks whether country is 'UNITED STATES OF AMERICA' or not and returns a binary flag
 
-            Parameters:
-                country (str): country
+        Args:
+            country (str): country
 
-            Returns:
-                USA_YN (str): binary flag based on country value
-        '''
+        Returns:
+            USA_YN (str): binary flag based on country value
+        """
         if country=='UNITED STATES OF AMERICA':
             USA_YN='Y' 
         else:
@@ -66,29 +53,26 @@ class BuildFeaturesTransformer(BaseEstimator, TransformerMixin):
         return USA_YN
 
     def fit(self, X, y=None):
-        '''
+        """
         Fit the class on input dataframe
 
-            Parameters:
-                X (pandas DataFrame): input dataframe
-                y : place holder, defaulted to None
-
-            Returns:
-                None
-        '''
+        Args:
+            X (pandas DataFrame): input dataframe
+            y : place holder, defaulted to None
+        """
         return self
 
     def transform(self, X, y=None):
-        '''
+        """
         Apply transforms on the input dataframe to build new features
 
-            Parameters:
-                X (pandas DataFrame): input dataframe
-                y : place holder, defaulted to None
+        Args:
+            X (pandas DataFrame): input dataframe
+            y : place holder, defaulted to None
 
-            Returns:
-                X : Transformed dataframe with new features added in as columns
-        '''
+        Returns:
+            X : Transformed dataframe with new features added in as columns
+        """
         # Processing_Days and Validity_days
         X['PROCESSING_DAYS']=self.date_diff(X.DECISION_DATE, X.RECEIVED_DATE).dt.days
         X['VALIDITY_DAYS']=self.date_diff(X.END_DATE, X.BEGIN_DATE).dt.days
