@@ -1,4 +1,17 @@
 ## Journal to store day-to-day notes, important observations, thoughts and misc.  
+### 1/25/21 -
+
+Today I will finish below tasks - 
+1. write separate code for rebuilding observations_df and saving the columns
+2. note down test cases in a test case document and start building scripts
+3. start building the make_dataset.py code, note down starategy
+4. Make the autodocs work - resolve the 'make: *** No rule to make target 'html'.  Stop.' error.
+5. fix logging issues, tuples and arrays are not being logged correctly
+
+### 1/18/21 to 1/20/21-
+#### approx time spent - 10h
+Spent time on refactoring the code and adding logging hooks. Split the custom build functions into mylib.py and classes into transforms.py. 
+
 ### 1/15/21 -
 #### approx time spent - 5h 
 Moved the preprocessing transformer classes to seperate files that can be reused and imported.  

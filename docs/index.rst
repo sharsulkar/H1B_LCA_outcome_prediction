@@ -2,7 +2,7 @@
 Welcome to H1B LCA outcome prediction's documentation!
 ======================================================
 
-.. automodule:: prototyping.code
+.. automodule:: src
     :members:
 
 .. toctree::
