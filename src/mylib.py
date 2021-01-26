@@ -12,7 +12,7 @@ def read_csv_to_list(filepath, header=None, squeeze=True):
         Returns:
             list: list of values from CSV file
         """
-    return list(pd.read_csv(filepath, header=None, squeeze=True))
+    return list(pd.read_csv(filepath, header, squeeze))
 
 def modify_observations(df,index,columns,values,modify_action='update_values'):
     """
