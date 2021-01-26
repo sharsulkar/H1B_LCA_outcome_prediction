@@ -1,11 +1,22 @@
 ## Journal to store day-to-day notes, important observations, thoughts and misc.  
-### 1/25/21 -
+### 1/25/21 - 1/27/21 -
+#### approx time spent - 10h
 
 Today I will finish below tasks - 
 1. write separate code for rebuilding observations_df and saving the columns - done, need to refactor the new code
+
 2. note down test cases in a test case document and start building scripts
+
 3. start building the make_dataset.py code, note down starategy
-4. Make the autodocs work - resolve the 'make: *** No rule to make target 'html'.  Stop.' error.
+
+4. Make the autodocs work - resolve the 'make: *** No rule to make target 'html'.  Stop.' error - done
+    Had to reinstall sphinx, added the correct sys path to conf.py. Now it is working as expected.
+    Next steps -  
+        a. Format Index.rst correctly to have a easy to read documentation
+        b. Update the theme to 'Read the Docs Theme'
+        c. Organize all technical and non-technical documentation in the same place.
+        d. Add doc updates as pre-commit step
+
 5. fix logging issues, tuples and arrays are not being logged correctly
 
 ### 1/18/21 to 1/20/21-
