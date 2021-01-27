@@ -1,4 +1,8 @@
 import pandas as pd
+import logging
+
+# create logger
+module_logger = logging.getLogger('my_application.mylib')
 
 def read_csv_to_list(filepath, header=None, squeeze=True):
     """
@@ -12,6 +16,7 @@ def read_csv_to_list(filepath, header=None, squeeze=True):
         Returns:
             list: list of values from CSV file
         """
+    module_logger.info('Executing read_csv_to_list')
     return list(pd.read_csv(filepath, header, squeeze))
 
 def modify_observations(df,index,columns,values,modify_action='update_values'):
@@ -29,19 +34,23 @@ def modify_observations(df,index,columns,values,modify_action='update_values'):
     Returns:
         DataFrame: Returns the modified DataFrame
     """
+    module_logger.info('Starting executiion of modify_observations module.')
+
     #columns and values are of same length
-    assert len(columns)==len(values),'Input given in columns and values must have equal length.'
+    assert len(columns)==len(values),module_logger.error('Input given in columns and values must have equal length.')
     #Input indexes exist in df
-    assert set(index).issubset(set(df.index)),'Index not found in given input DataFrame.'
+    assert set(index).issubset(set(df.index)),module_logger.error('Index not found in given input DataFrame.')
     #Input columns exist in df
-    assert set(columns).issubset(set(df.columns.values)),'Columns not found in given input DataFrame.'
+    assert set(columns).issubset(set(df.columns.values)),module_logger.error('Columns not found in given input DataFrame.')
 
     if modify_action=='add_row':
         df.loc[index]=values
 
     elif modify_action=='update_values':
         df.loc[index,columns]=values
-  
+
+    module_logger.info('Executiion of modify_observations module complete.')
+
     return df
 
 def missing_statistics(df,column):
@@ -55,8 +64,13 @@ def missing_statistics(df,column):
     Returns:
         float: percent missing records in the column
     """
+    module_logger.info('Starting executiion of missing_statistics module.')
+
     #Input column exist in df
-    assert set([column]).issubset(set(df.columns.values)),'Column not found in given input DataFrame.'
+    assert set([column]).issubset(set(df.columns.values)),module_logger.error('Column not found in given input DataFrame.')
+
+    module_logger.info('Executiion of missing_statistics module complete.')
+
     return (df.shape[0]-df[column].count())*100/df.shape[0]
 
 def cardinality_statistics(df,column):
@@ -69,6 +83,12 @@ def cardinality_statistics(df,column):
     Returns:
         float: cardinality of the column
     """
-    assert set([column]).issubset(set(df.columns.values)),'Column not found in given input DataFrame.'
+    module_logger.info('Starting executiion of cardinality_statistics module.')
+
+    #Input column exist in df
+    assert set([column]).issubset(set(df.columns.values)),module_logger.error('Column not found in given input DataFrame.')
+
+    module_logger.info('Executiion of cardinality_statistics module complete.')
+
     return (df.shape[0]-len(df[column].unique()))*100/df.shape[0]
     
