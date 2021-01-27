@@ -3,13 +3,14 @@
 #### approx time spent - 10h
 
 Today I will finish below tasks - 
-1. write separate code for rebuilding observations_df and saving the columns - done, need to refactor the new code
+1. write separate code for rebuilding observations_df and saving the columns - 
+    done, need to refactor the new code  
+2. note down test cases in a test case document and start building scripts  
+    Created test_cases.md in reports/notes/ and listed all sanity checks that need to be added in the code.  
+    Need to add functional tests that need to be run with py-test.  
+3. start building the make_dataset.py code, note down starategy  
 
-2. note down test cases in a test case document and start building scripts
-
-3. start building the make_dataset.py code, note down starategy
-
-4. Make the autodocs work - resolve the 'make: *** No rule to make target 'html'.  Stop.' error - done
+4. Make the autodocs work - resolve the 'make: *** No rule to make target 'html'.  Stop.' error - done  
     Had to reinstall sphinx, added the correct sys path to conf.py. Now it is working as expected.
     Next steps -  
         a. Format Index.rst correctly to have a easy to read documentation
