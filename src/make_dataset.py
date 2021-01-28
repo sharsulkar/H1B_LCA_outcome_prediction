@@ -1,7 +1,6 @@
 import pandas as pd
 import logging
 from mylib import read_csv_to_list
-import logging
 
 module_logger= logging.getLogger('my_application.make_dataset')
 def main():

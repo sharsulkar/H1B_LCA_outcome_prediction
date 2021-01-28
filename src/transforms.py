@@ -1,7 +1,10 @@
-
 import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
+import logging
+
+# create logger
+module_logger = logging.getLogger('my_application.transforms')
 
 class DropRowsTransformer(BaseEstimator, TransformerMixin):
     """
@@ -26,6 +29,8 @@ class DropRowsTransformer(BaseEstimator, TransformerMixin):
             reset_index : binary (default=True)
                 Whether reindexing should be performed after drop action
         """
+        self.logger = logging.getLogger('my_application.transforms.DropRowsTransformer')
+        self.logger.info('creating an instance of DropRowsTransformer')
         self.row_index = row_index
         self.inplace = True
         self.reset_index = True
@@ -54,6 +59,7 @@ class DropRowsTransformer(BaseEstimator, TransformerMixin):
         X.drop(index=self.row_index, inplace=self.inplace)
         if self.reset_index:
             X.reset_index(inplace=True)
+        self.logger.info('Drop rows complete.')
         return X
 
 #Custom transformer to drop features for input feature list
@@ -76,6 +82,8 @@ class DropFeaturesTransformer(BaseEstimator, TransformerMixin):
             columns (array or list): A list of columns that should be dropped from the DataFrame.
             inplace : (binary) : Whether the action should be performed inplace or not, defaulted to True.
         """
+        self.logger = logging.getLogger('my_application.transforms.DropFeaturesTransformer')
+        self.logger.info('creating an instance of DropFeaturesTransformer')
         self.columns = columns  # list of categorical columns in input Dataframe
         self.inplace = True
 
@@ -101,6 +109,7 @@ class DropFeaturesTransformer(BaseEstimator, TransformerMixin):
             X : Transformed dataframe
         """
         X.drop(columns=self.columns, inplace=self.inplace)
+        self.logger.info('Drop features complete.')
         return X
 
 class RandomStandardEncoderTransformer(BaseEstimator, TransformerMixin):
@@ -125,6 +134,8 @@ class RandomStandardEncoderTransformer(BaseEstimator, TransformerMixin):
             categories (array or list, optional): Array of unique non-numeric values in each categorical column. Defaults to None.
             RSE (array or list): Array of Random Standard encoding for each row in categories. Defaults to None.
         """
+        self.logger = logging.getLogger('my_application.transforms.RandomStandardEncoderTransformer')
+        self.logger.info('creating an instance of RandomStandardEncoderTransformer')
         self.cat_cols = cat_cols
         self.categories = categories
         self.RSE = RSE
@@ -145,6 +156,9 @@ class RandomStandardEncoderTransformer(BaseEstimator, TransformerMixin):
                 self.categories[i] = np.append(self.categories[i], np.nan)
         #compute RandomStandardEncoding
         self.RSE = [np.random.normal(0, 1, len(self.categories[i])) for i in range(len(self.cat_cols))]
+
+        self.logger.info('Encoding computation complete.')
+
         return self
 
     #Custom transform method we wrote that creates aformentioned features and drops redundant ones
@@ -161,6 +175,9 @@ class RandomStandardEncoderTransformer(BaseEstimator, TransformerMixin):
         """
         for i in range(len(self.cat_cols)):
             X.loc[:, (str(self.cat_cols[i]))].replace(dict(zip(self.categories[i], self.RSE[i])),inplace=True)
+        
+        self.logger.info('Encoding application complete.')
+
         return X
 
 #build features
@@ -182,6 +199,8 @@ class BuildFeaturesTransformer(BaseEstimator, TransformerMixin):
         Args:
             input_columns (array or list) : The columns that will be used as input for building new features.
         """
+        self.logger = logging.getLogger('my_application.transforms.BuildFeaturesTransformer')
+        self.logger.info('creating an instance of BuildFeaturesTransformer')
         self.input_columns = input_columns
 
     def date_diff(self, date1, date2):
@@ -196,6 +215,9 @@ class BuildFeaturesTransformer(BaseEstimator, TransformerMixin):
             date_difference (timedelta): difference between date1 and date2
         """
         date_difference = date1-date2
+
+        self.logger.info('Date difference calculated successfully.')
+
         return date_difference
 
     def is_usa(self, country):
@@ -212,6 +234,9 @@ class BuildFeaturesTransformer(BaseEstimator, TransformerMixin):
             USA_YN = 'Y'
         else:
             USA_YN = 'N'
+        
+        self.logger.info('is_usa function calculated successfully.')
+
         return USA_YN
 
     def fit(self, X, y=None):
@@ -277,5 +302,7 @@ class BuildFeaturesTransformer(BaseEstimator, TransformerMixin):
         X.iloc[X[X.PW_UNIT_OF_PAY == 'Month'].index, X.columns.get_loc('PW_WAGE_PER_HR')] = X[X.PW_UNIT_OF_PAY == 'Month'].PREVAILING_WAGE/172
 
         X['WAGE_ABOVE_PW_HR'] = X.WAGE_PER_HR-X.PW_WAGE_PER_HR
+
+        self.logger.info('New features created successfully.')
 
         return X

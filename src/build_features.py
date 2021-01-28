@@ -13,28 +13,22 @@ from mylib import read_csv_to_list
 
 #import observations_df for referencing features and corresponding preprocessing actions to be performed on them
 #observations_df=pd.read_csv('https://raw.githubusercontent.com/sharsulkar/H1B_LCA_outcome_prediction/main/reports/final_observations.csv',sep='$',index_col=0,error_bad_lines=False)
-
+module_logger= logging.getLogger('my_application.build_features')
 
 def main(input_df):
+
+    module_logger.info('Starting to build features.')
+
     #identify and define column sets for applying preprocessing transforms
     num_cols=read_csv_to_list('https://raw.githubusercontent.com/sharsulkar/H1B_LCA_outcome_prediction/main/data/processed/numeric_columns.csv',header=None,squeeze=True)
     cat_cols=read_csv_to_list('https://raw.githubusercontent.com/sharsulkar/H1B_LCA_outcome_prediction/main/data/processed/categorical_columns.csv',header=None,squeeze=True)
     drop_cols=read_csv_to_list('https://github.com/sharsulkar/H1B_LCA_outcome_prediction/raw/main/data/processed/drop_columns.csv',header=None,squeeze=True)
     fe_cols=read_csv_to_list('https://raw.githubusercontent.com/sharsulkar/H1B_LCA_outcome_prediction/main/data/processed/feature_engineering_columns.csv',header=None,squeeze=True)
         
-    logging.info('Importing columns from stored lists complete.')
-    #logging.info('Numeric columns:%s',num_cols)
-    #logging.info('Categorical columns:%s',cat_cols)
-    #logging.info('Columns to be dropped:%s',drop_cols)
-    #logging.info('Columns used for feature engineering:%s',fe_cols)
-    #logging.info('Required columns:',required_features)
-
-    #source data 
-    #input_df=make_dataset.main()
-    #logging.info('Input dataframe imported with shape:',input_df.shape)
+    module_logger.info('Importing columns from stored lists complete.')
 
     drop_row_index=input_df[~input_df.CASE_STATUS.isin(['Certified','Denied'])].index
-    logging.info('Number of rows with CASE_STATUS other than Certified and Denied:%s',drop_row_index.shape[0])
+    module_logger.info('Number of rows with CASE_STATUS other than Certified and Denied:{}',drop_row_index.shape[0])
 
     #Build preprocessing pipeline
     build_feature_pipe=make_pipeline(
@@ -60,23 +54,26 @@ def main(input_df):
 
 
     #apply pipeline
-    logging.info('Pipeline started')
+    module_logger.info('Pipeline started')
     #feature engineering + drop rows
     fe_df=build_feature_pipe.fit_transform(input_df)
-    logging.info('feature engineering + drop rows done')
+    module_logger.info('feature engineering + drop rows done')
     #Separate target column - add conditions to apply only on training dataset
     y=fe_df.pop('CASE_STATUS')
-    logging.info('Target column separated')
+    module_logger.info('Target column separated')
     #drop columns + encoding
     X=all_preprocess.fit_transform(fe_df)
-    logging.info('drop columns + encoding done')
+    module_logger.info('drop columns + encoding done')
     #save transformed dataset and target 
     #pd.DataFrame(X,columns=fe_df.columns.values).to_csv('/content/drive/MyDrive/Datasets/processed.csv') 
-
+    module_logger.info('Building features complete.')
     #save pipeline
     #dump(all_preprocess,open('/content/drive/MyDrive/preprocess_pipe.pkl','wb')) 
     ##all_preprocess=load(open('/content/drive/MyDrive/preprocess_pipe.pkl','rb')) 
     return X, y
 
 if __name__ == '__main__':
-    main()
+    import make_dataset
+    
+    input_df=make_dataset.main()
+    main(input_df)
