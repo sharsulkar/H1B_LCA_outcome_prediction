@@ -235,7 +235,7 @@ class BuildFeaturesTransformer(BaseEstimator, TransformerMixin):
         else:
             USA_YN = 'N'
         
-        self.logger.info('is_usa function calculated successfully.')
+        #self.logger.info('is_usa function calculated successfully.')
 
         return USA_YN
 

@@ -28,7 +28,7 @@ def main(input_df):
     module_logger.info('Importing columns from stored lists complete.')
 
     drop_row_index=input_df[~input_df.CASE_STATUS.isin(['Certified','Denied'])].index
-    module_logger.info('Number of rows with CASE_STATUS other than Certified and Denied:{}',drop_row_index.shape[0])
+    module_logger.info('Number of rows with CASE_STATUS other than Certified and Denied:%d',drop_row_index.shape[0])
 
     #Build preprocessing pipeline
     build_feature_pipe=make_pipeline(
@@ -74,6 +74,6 @@ def main(input_df):
 
 if __name__ == '__main__':
     import make_dataset
-    
+
     input_df=make_dataset.main()
     main(input_df)

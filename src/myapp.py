@@ -28,7 +28,7 @@ def main():
     logger.info('Dataset imported')
     #build_features
     X,y=build_features.main(input_df)
-    logger.info('Features built, X shape %d, y shape %d',X.shape,y.shape)
+    logger.info('Features built, X shape %d %d, y shape %d',X.shape[0],X.shape[1],y.shape[0])
 
     #if mode==Train: 
         #train_model
