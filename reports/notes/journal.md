@@ -1,14 +1,19 @@
 ## Journal to store day-to-day notes, important observations, thoughts and misc.  
 ### 1/28/21 -
 #### approx time spent - 4h
+1. Continued working on adding sanity and test scripts.  
+2. Continued working on make_dataset code.
+3. Started looking into automating precommit tasks - autodoc, executing test scripts, code linting
+
+### 1/27/21 -
+#### approx time spent - 4h
 1. Added code to log steps, exceptions etc in all code. fixed logging issues.
 2. Created 2 smaller dataset of the actual input - one with 1000 samples and other with 10K samples for quick prototyping and testing. The actual dataset take a lot of time to load every time I want
 to run the code to check if the changes work.
-3. Started working on the make_dataset module. Plan is to use a txt file to store all paths to input data and use that file to import and create a single dataset that can then be
-split into training, val and test dataset.
+3. Started working on the make_dataset module. Plan is to use a txt file to store all paths to input data and use that file to import and create a single dataset that can then be split into training, val and test dataset.
 4. Still need to add the sanity checks and write functional test scripts.
 
-### 1/25/21 - 1/27/21 -
+### 1/25/21 - 1/26/21 -
 #### approx time spent - 10h
 
 Today I will finish below tasks - 
