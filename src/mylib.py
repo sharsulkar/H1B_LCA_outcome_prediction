@@ -17,7 +17,7 @@ def read_csv_to_list(filepath, header=None, squeeze=True):
             list: list of values from CSV file
         """
     module_logger.info('Executing read_csv_to_list')
-    return list(pd.read_csv(filepath, header, squeeze))
+    return list(pd.read_csv(filepath, header=header, squeeze=squeeze))
 
 def modify_observations(df,index,columns,values,modify_action='update_values'):
     """
