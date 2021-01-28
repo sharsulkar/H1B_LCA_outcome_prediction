@@ -4,7 +4,7 @@ import build_features
 
 
 def main():
-    # create logger with 'spam_application'
+    # create logger with 'my_application'
     logger = logging.getLogger('my_application')
     logger.setLevel(logging.DEBUG)
     # create file handler which logs even debug messages
@@ -25,6 +25,10 @@ def main():
     logger.info('Execution started')
     #make_dataset
     input_df=make_dataset.main()
+    
+    #Ensure input_df is not empty 
+    assert input_df.shape[0]>0, logger.exception('Input DataFrame is empty')
+
     logger.info('Dataset imported')
     #build_features
     X,y=build_features.main(input_df)

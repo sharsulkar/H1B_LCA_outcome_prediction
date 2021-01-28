@@ -57,13 +57,24 @@ def main(input_df):
     module_logger.info('Pipeline started')
     #feature engineering + drop rows
     fe_df=build_feature_pipe.fit_transform(input_df)
+    #Ensure that there are no records with CASE_STATUS not in ['Certified','Denied'] after drop_rows  
+    assert fe_df[~fe_df.CASE_STATUS.isin(['Certified','Denied'])].shape[0]==0, module_logger.error('Unexpected values found in CASE_STATUS field.')
+
     module_logger.info('feature engineering + drop rows done')
+
     #Separate target column - add conditions to apply only on training dataset
     y=fe_df.pop('CASE_STATUS')
     module_logger.info('Target column separated')
+
     #drop columns + encoding
     X=all_preprocess.fit_transform(fe_df)
+
+    #Ensure that X has expected number of features  
+    assert X.shape[1]==30,module_logger.exception('Arrays X of shape [:,31] expected.')
+    #Ensure that X and y have same number of rows  
+    assert X.shape[0]==y.shape[0],module_logger.exception('Arrays X and y should have same number of rows.') 
     module_logger.info('drop columns + encoding done')
+
     #save transformed dataset and target 
     #pd.DataFrame(X,columns=fe_df.columns.values).to_csv('/content/drive/MyDrive/Datasets/processed.csv') 
     module_logger.info('Building features complete.')
