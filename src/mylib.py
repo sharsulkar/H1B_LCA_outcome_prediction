@@ -34,7 +34,7 @@ def modify_observations(df,index,columns,values,modify_action='update_values'):
     Returns:
         DataFrame: Returns the modified DataFrame
     """
-    module_logger.info('Starting executiion of modify_observations module.')
+    module_logger.info('Starting Execution of modify_observations module.')
 
     #columns and values are of same length
     assert len(columns)==len(values),module_logger.error('Input given in columns and values must have equal length.')
@@ -49,7 +49,7 @@ def modify_observations(df,index,columns,values,modify_action='update_values'):
     elif modify_action=='update_values':
         df.loc[index,columns]=values
 
-    module_logger.info('Executiion of modify_observations module complete.')
+    module_logger.info('Execution of modify_observations module complete.')
 
     return df
 
@@ -64,12 +64,12 @@ def missing_statistics(df,column):
     Returns:
         float: percent missing records in the column
     """
-    module_logger.info('Starting executiion of missing_statistics module.')
+    module_logger.info('Starting execution of missing_statistics module.')
 
     #Input column exist in df
     assert set([column]).issubset(set(df.columns.values)),module_logger.error('Column not found in given input DataFrame.')
 
-    module_logger.info('Executiion of missing_statistics module complete.')
+    module_logger.info('Execution of missing_statistics module complete.')
 
     return (df.shape[0]-df[column].count())*100/df.shape[0]
 
@@ -83,12 +83,12 @@ def cardinality_statistics(df,column):
     Returns:
         float: cardinality of the column
     """
-    module_logger.info('Starting executiion of cardinality_statistics module.')
+    module_logger.info('Starting execution of cardinality_statistics module.')
 
     #Input column exist in df
     assert set([column]).issubset(set(df.columns.values)),module_logger.error('Column not found in given input DataFrame.')
 
-    module_logger.info('Executiion of cardinality_statistics module complete.')
+    module_logger.info('Execution of cardinality_statistics module complete.')
 
     return (df.shape[0]-len(df[column].unique()))*100/df.shape[0]
     

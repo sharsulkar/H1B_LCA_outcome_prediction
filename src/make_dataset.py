@@ -6,7 +6,7 @@ import logging
 module_logger= logging.getLogger('my_application.make_dataset')
 def main():
 
-    module_logger.info('Starting executiion of make_dataset module.')
+    module_logger.info('Starting execution of make_dataset module.')
 
     required_features=read_csv_to_list('https://raw.githubusercontent.com/sharsulkar/H1B_LCA_outcome_prediction/main/data/processed/required_features.csv',header=None,squeeze=True)
     try :
@@ -14,7 +14,7 @@ def main():
     except ValueError:
         module_logger.exception('ValueError: columns %s not found',required_features)
     
-    module_logger.info('Executiion of make_dataset module complete.')
+    module_logger.info('Execution of make_dataset module complete.')
 
     return input_df
 
