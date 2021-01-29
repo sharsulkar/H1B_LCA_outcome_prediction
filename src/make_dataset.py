@@ -20,8 +20,6 @@ def main(data_files_list_path):
     for path in file_itr:
 
         try :
-            #input_df=pd.read_excel('https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2020_Q2.xlsx',usecols=required_features)
-            #input_df=pd.read_excel('https://github.com/sharsulkar/H1B_LCA_outcome_prediction/raw/main/data/interim/LCA_dataset_sample1000.xlsx',usecols=required_features)
             data_df=pd.read_excel(path,usecols=required_features)
 
             module_logger.info('Imported dataframe with shape [%d,%d]',data_df.shape[0],data_df.shape[1])

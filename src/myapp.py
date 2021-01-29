@@ -24,7 +24,8 @@ def main():
 
     logger.info('Execution started')
     #make_dataset
-    input_df=make_dataset.main()
+    data_files_list_path='./data/interim/LCA_files_list.txt'
+    input_df=make_dataset.main(data_files_list_path)
     
     #Ensure input_df is not empty 
     assert input_df.shape[0]>0, logger.exception('Input DataFrame is empty')
