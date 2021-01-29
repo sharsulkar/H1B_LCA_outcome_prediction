@@ -70,7 +70,7 @@ def main(input_df):
     X=all_preprocess.fit_transform(fe_df)
 
     #Ensure that X has expected number of features  
-    assert X.shape[1]==30,module_logger.exception('Arrays X of shape [:,31] expected.')
+    assert X.shape[1]==31,module_logger.exception('Arrays X of shape [:,31] expected.')
     #Ensure that X and y have same number of rows  
     assert X.shape[0]==y.shape[0],module_logger.exception('Arrays X and y should have same number of rows.') 
     module_logger.info('drop columns + encoding done')

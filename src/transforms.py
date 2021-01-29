@@ -108,6 +108,9 @@ class DropFeaturesTransformer(BaseEstimator, TransformerMixin):
         Returns:
             X : Transformed dataframe
         """
+        #Ensure given columns are present in the DataFrame 
+        assert set(self.columns).issubset(set(X.columns.values)),self.logger.error('Columns not found in given input DataFrame.')
+        
         X.drop(columns=self.columns, inplace=self.inplace)
         self.logger.info('Drop features complete.')
         return X
@@ -148,7 +151,10 @@ class RandomStandardEncoderTransformer(BaseEstimator, TransformerMixin):
             X (pandas DataFrame): input dataframe
             y : place holder, defaulted to None
         """
-          #Get a list of all unique categorical values for each column
+        #Ensure given columns are present in the DataFrame 
+        assert set(self.cat_cols).issubset(set(X.columns.values)),self.logger.error('Columns not found in given input DataFrame.')
+
+        #Get a list of all unique categorical values for each column        
         self.categories = [X[column].unique() for column in X[self.cat_cols]]
         #replace missing values and append missing value label to each column to handle missing values in test dataset that might not be empty in train dataset
         for i in range(len(self.categories)):
@@ -214,8 +220,8 @@ class BuildFeaturesTransformer(BaseEstimator, TransformerMixin):
         Returns:
             date_difference (timedelta): difference between date1 and date2
         """
+        
         date_difference = date1-date2
-
         self.logger.info('Date difference calculated successfully.')
 
         return date_difference
@@ -260,6 +266,11 @@ class BuildFeaturesTransformer(BaseEstimator, TransformerMixin):
         Returns:
             X : Transformed dataframe with new features added in as columns
         """
+        #Input columns exist in df
+        expected_columns=['DECISION_DATE', 'RECEIVED_DATE','SOC_CODE','EMPLOYER_COUNTRY','EMPLOYER_POSTAL_CODE','WORKSITE_POSTAL_CODE',
+        'PW_OTHER_SOURCE','PW_OES_YEAR','PW_OTHER_YEAR','WAGE_RATE_OF_PAY_FROM','WAGE_UNIT_OF_PAY','PW_UNIT_OF_PAY','PREVAILING_WAGE']
+        assert set(expected_columns).issubset(set(X.columns.values)),self.logger.error('Columns not found in given input DataFrame.')
+
         # Processing_Days and Validity_days
         X['PROCESSING_DAYS'] = self.date_diff(X.DECISION_DATE, X.RECEIVED_DATE).dt.days
         X['VALIDITY_DAYS'] = self.date_diff(X.END_DATE, X.BEGIN_DATE).dt.days
