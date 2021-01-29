@@ -17,6 +17,7 @@ def read_csv_to_list(filepath, header=None, squeeze=True):
             list: list of values from CSV file
         """
     module_logger.info('Executing read_csv_to_list')
+
     return list(pd.read_csv(filepath, header=header, squeeze=squeeze))
 
 def modify_observations(df,index,columns,values,modify_action='update_values'):
@@ -42,8 +43,10 @@ def modify_observations(df,index,columns,values,modify_action='update_values'):
     assert set(index).issubset(set(df.index)),module_logger.error('Index not found in given input DataFrame.')
     #Input columns exist in df
     assert set(columns).issubset(set(df.columns.values)),module_logger.error('Columns not found in given input DataFrame.')
+    #modify_action has valid values
+    assert set([modify_action]).issubset(set(['add_rows','update_values'])),module_logger.error('Columns not found in given input DataFrame.')
 
-    if modify_action=='add_row':
+    if modify_action=='add_rows':
         df.loc[index]=values
 
     elif modify_action=='update_values':
