@@ -58,7 +58,7 @@ class DropRowsTransformer(BaseEstimator, TransformerMixin):
         """
         X.drop(index=self.row_index, inplace=self.inplace)
         if self.reset_index:
-            X.reset_index(inplace=True)
+            X.reset_index(inplace=True,drop=True)
         self.logger.info('Drop rows complete.')
         return X
 
