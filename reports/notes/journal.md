@@ -1,4 +1,19 @@
-## Journal to store day-to-day notes, important observations, thoughts and misc.  
+## Journal to store day-to-day notes, important observations, thoughts and misc. 
+### 2/3/21 -
+#### approx time spent - 6h
+Now that I have a working model, I will focus on refactoring the code, making it work seamlessly as a package and start working on the explainability of the predictions and making the predictions useful to general public. So the focus is now more on XAI and publishing the project to Heroku as version1. Improving the model performance will be in version2 (If I even decide to get there.)
+Today will work on below items -
+1. Create separate pipelines for handling below data -
+    a. One for incremenral training data so new training data can be added in future - so basically retraining the model when new data becomes available
+    b. one for test data - basically make sure the pipeline.transform and model.predict works in sync correctly
+This will involve updating the numerical scaling transform and RSE to reuse their parameters and update them with the new data as if all the data was available at the beginning.  
+2. Create a function/class to inverse transform the scaled and embedded values back to original
+    We dont need this for test rows as they will be accessible to the user but it will be needed for XAI to show proximity to specific training samples.
+
+### 2/2/21 -
+#### approx time spent - 4h
+finished training a model to fit 2020Q1,Q2 as training and Q3 as test data. Adaboost model gives a very good fit with f1score > 0.9. There was a bit of struggle to get mainly because there were some missed steps in preprocessing that were causing an index mismatch between the training features and target variable. It was smooth sailing after I found and fixed that. Saved the model in drive for future reference and use.
+
 ### 1/28/21 -
 #### approx time spent - 4h
 1. Continued working on adding sanity and test scripts.  
