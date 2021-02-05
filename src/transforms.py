@@ -57,6 +57,7 @@ class DropRowsTransformer(BaseEstimator, TransformerMixin):
             X : Transformed dataframe
         """
         self.row_index=X[~X.CASE_STATUS.isin(['Certified','Denied'])].index
+        self.logger.info('Number of rows with CASE_STATUS other than Certified and Denied:%d',self.row_index.shape[0])
         X.drop(index=self.row_index, inplace=self.inplace)
         if self.reset_index:
             X.reset_index(inplace=True,drop=True)
