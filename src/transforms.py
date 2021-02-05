@@ -177,7 +177,7 @@ class RandomStandardEncoderTransformer(BaseEstimator, TransformerMixin):
         #Get a list of all unique categorical values for each column
         if self.categories is None:
             self.logger.info('Initial encoding computation started.')
-            self.categories = [X[column].unique() for column in cat_cols]
+            self.categories = [X[column].unique() for column in self.cat_cols]
             #replace missing values and append missing value label to each column to handle missing values in test dataset that might not be empty in train dataset
             for i in range(len(self.categories)):
                 if np.array(self.categories[i].astype(str)!=str(np.nan)).all():
@@ -386,7 +386,7 @@ class BuildFeaturesTransformer(BaseEstimator, TransformerMixin):
         """
         return self
 
-    #custom transformer for incrementally scaling to standard scale using pooled mean and variance
+#custom transformer for incrementally scaling to standard scale using pooled mean and variance
 class CustomStandardScaler(BaseEstimator, TransformerMixin):
     """
     A class to apply standard scaling transform incrementally using pooled mean and variance.

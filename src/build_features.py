@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.compose import make_column_transformer
 from pickle import dump, load
-import transforms 
+import transforms
 from mylib import read_csv_to_list
 
 
@@ -40,7 +40,7 @@ def main(input_df, build_feature_pipe=None, all_preprocess=None, method='fit_tra
 
         numerical_preprocess=make_pipeline(
             SimpleImputer(strategy='median'),
-            CustomStandardScaler()
+            transforms.CustomStandardScaler()
         )
 
         preprocess_pipe=make_column_transformer(
@@ -60,8 +60,8 @@ def main(input_df, build_feature_pipe=None, all_preprocess=None, method='fit_tra
     if method=='fit':
         module_logger.info('Starting pipeline.fit')
 
-        build_feature_pipe.fit(input_df) 
-        all_preprocess.fit(input_df)
+        fe_df=build_feature_pipe.fit_transform(input_df) 
+        all_preprocess.fit(fe_df)
         
         X=[] #return empty array as only pipeline is fitted
         y=[] #return empty array as only pipeline is fitted
@@ -150,12 +150,16 @@ if __name__ == '__main__':
 
     data_files_list_path='./data/interim/LCA_files_list.txt'
 
-    input_df=make_dataset.main(data_files_list_path)
+    input_df=make_dataset.main(path=data_files_list_path,file_type='file_list')
 
     #For training the very first time
-    main(input_df)
+    #X,y = main(input_df, build_feature_pipe=None, all_preprocess=None, method='fit')
+    #print(X.shape)
+    #print(y.shape)
 
     #For iterative training
-    #build_feature_pipe=load(open('./models/build_feature_pipe.pkl','rb')) 
-    #all_preprocess=load(open('./models/preprocess_pipe.pkl','rb')) 
-    #main(input_df,build_feature_pipe,all_preprocess)
+    build_feature_pipe=load(open('./models/build_feature_pipe.pkl','rb')) 
+    all_preprocess=load(open('./models/preprocess_pipe.pkl','rb')) 
+    X,y = main(input_df,build_feature_pipe,all_preprocess, method='inverse')
+    print(X.shape)
+    print(y.shape)

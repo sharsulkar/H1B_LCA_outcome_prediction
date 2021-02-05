@@ -41,6 +41,11 @@ def main(path,file_type='file_list'):
     return input_df
 
 if __name__ == '__main__':
-    data_files_list_path='./data/interim/LCA_files_list.txt'
-    input_df=main(path=data_files_list_path,file_type='file_list')
+    #path to files list
+    #data_files_list_path='./data/interim/LCA_files_list.txt' 
+    #input_df=main(path=data_files_list_path,file_type='file_list')
+
+    #path to data file
+    data_path='./data/interim/LCA_dataset_sample1000.xlsx' 
+    input_df=main(path=data_path,file_type='data_file')
     print(input_df.shape)
