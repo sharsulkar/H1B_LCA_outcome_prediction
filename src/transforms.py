@@ -64,6 +64,15 @@ class DropRowsTransformer(BaseEstimator, TransformerMixin):
         self.logger.info('Drop rows complete.')
         return X
 
+    def inverse_transform(self,X):
+        """
+        Inverse transform input.
+
+        Args:
+            X (pandas DataFrame): input dataframe
+        """
+        return self
+
 #Custom transformer to drop features for input feature list
 class DropFeaturesTransformer(BaseEstimator, TransformerMixin):
     """A class to drop features from a DataFrame.
@@ -116,6 +125,15 @@ class DropFeaturesTransformer(BaseEstimator, TransformerMixin):
         X.drop(columns=self.columns, inplace=self.inplace)
         self.logger.info('Drop features complete.')
         return X
+
+    def inverse_transform(self,X):
+        """
+        Inverse transform input.
+
+        Args:
+            X (pandas DataFrame): input dataframe
+        """
+        return self
 
 class RandomStandardEncoderTransformer(BaseEstimator, TransformerMixin):
     """
@@ -213,19 +231,19 @@ class RandomStandardEncoderTransformer(BaseEstimator, TransformerMixin):
 
         return X
 
-        def inverse_transform(self,X):
-            """
-            Apply inverse transform to get original values back
+    def inverse_transform(self,X):
+        """
+        Apply inverse transform to get original values back
 
-            Args:
-                X (pandas DataFrame): input dataframe
+        Args:
+            X (pandas DataFrame): input dataframe
 
-            Returns:
-                X : Dataframe with pre transform inputs
-            """
-            for i in range(len(self.cat_cols)):
-                X.loc[:,(str(self.cat_cols[i]))].replace(dict(zip(self.RSE[i], self.categories[i])),inplace=True)
-            return X
+        Returns:
+            X : Dataframe with pre transform inputs
+        """
+        for i in range(len(self.cat_cols)):
+            X.loc[:,(str(self.cat_cols[i]))].replace(dict(zip(self.RSE[i], self.categories[i])),inplace=True)
+        return X
 
 #build features
 class BuildFeaturesTransformer(BaseEstimator, TransformerMixin):
@@ -358,6 +376,15 @@ class BuildFeaturesTransformer(BaseEstimator, TransformerMixin):
         self.logger.info('New features created successfully.')
 
         return X
+
+    def inverse_transform(self,X):
+        """
+        Inverse transform input.
+
+        Args:
+            X (pandas DataFrame): input dataframe
+        """
+        return self
 
     #custom transformer for incrementally scaling to standard scale using pooled mean and variance
 class CustomStandardScaler(BaseEstimator, TransformerMixin):
