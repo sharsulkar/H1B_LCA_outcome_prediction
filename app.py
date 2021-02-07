@@ -14,7 +14,7 @@ required_features=mylib.read_csv_to_list('./data/processed/required_features.csv
 
 @app.route('/')
 def home(): #home page - static webpage
-    return render_template('home.html')
+    return render_template('base.html')
 
 @app.route('/terms_of_use')
 def fair_warning(): #static webpage showing info on the limitations of the tool and terms of use
