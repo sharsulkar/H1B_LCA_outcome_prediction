@@ -1,5 +1,7 @@
 # LSTM: Long Short Term Memory
 
+[TOC]
+
 ## From RNN to LSTM
 
 ### Gated architecture
