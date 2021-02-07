@@ -1,4 +1,8 @@
 ## Journal to store day-to-day notes, important observations, thoughts and misc. 
+### 2/5/21 -
+Finished up prototyping and coding separate pipelines. Started researching into creating a webapp with bootstrap+flask+Heroku to make the model prediction realtime so it can be published and used by everyone (atleast thats the hope).
+Found some good tutorials to code with flask, and use online bootstrap form builders to create the required forms for user input. Will continue working on this for the next few days.
+
 ### 2/3/21 -
 #### approx time spent - 6h
 Now that I have a working model, I will focus on refactoring the code, making it work seamlessly as a package and start working on the explainability of the predictions and making the predictions useful to general public. So the focus is now more on XAI and publishing the project to Heroku as version1. Improving the model performance will be in version2 (If I even decide to get there.)
