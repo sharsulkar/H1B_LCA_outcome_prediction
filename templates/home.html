@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"
+        <title>Predict outcome of your H1B and PERM LCA application</title>
+    </head>
+    <body>
+        <div class="login">
+            <h1>Predict H1B LCA outcome</h1>
+
+            <form class="form-horizontal" action="{{url_for('predict')}}"method="POST">
+            <fieldset>
+
+            <!-- Form Name -->
+            <legend>Input LCA parameters for your application</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Some text input</label>  
+            <div class="col-md-4">
+            <input id="textinput" name="textinput" type="text" placeholder="placeholder" class="form-control input-md">
+            <span class="help-block">help</span>  
+            </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+            <label class="col-md-4 control-label" for="singlebutton"></label>
+            <div class="col-md-4">
+                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Make Prediction</button>
+            </div>
+            </div>
+
+            </fieldset>
+            </form>
+
+
+
+        
+    </body>
+
+
+</html>
