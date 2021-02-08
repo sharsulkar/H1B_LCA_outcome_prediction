@@ -14,9 +14,9 @@ required_features=mylib.read_csv_to_list('./data/processed/required_features.csv
 
 @app.route('/')
 def home(): #home page - static webpage
-    return render_template('base.html')
+    return render_template('home.html')
 
-@app.route('/terms_of_use')
+@app.route('/FAQ')
 def fair_warning(): #static webpage showing info on the limitations of the tool and terms of use
     return render_template('terms_of_use.html')
 
@@ -44,7 +44,7 @@ def predict():
 def how_does_it_work(): #static webpage explaining how prediction is made
     return render_template('how_does_it_work.html')
 
-@app.route('/documentation')
+@app.route('/technical_documentation')
 def documentation(): #static webpage that displays autodoc documentation
     return render_template('technical_docs.html')
 

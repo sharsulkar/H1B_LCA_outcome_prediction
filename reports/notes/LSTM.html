@@ -1,4 +1,3 @@
-<h3 id="lstm-long-short-term-memory">LSTM: Long Short Term Memory</h3>
 <div class="toc">
 <ul>
 <li><a href="#lstm-long-short-term-memory">LSTM: Long Short Term Memory</a><ul>
@@ -30,10 +29,12 @@
 </li>
 </ul>
 </div>
-<h4 id="from-rnn-to-lstm">From RNN to LSTM</h4>
-<h5 id="gated-architecture">Gated architecture</h5>
+<h1>LSTM: Long Short Term Memory</h1>
+<p>[TOC]</p>
+<h2>From RNN to LSTM</h2>
+<h3>Gated architecture</h3>
 <p>As seen in <insert back reference to RNN chapter section "Ways to fix RNN issues" here>, simple RNN cell architecture has limitations in learning long term dependencies from input sequence due to vanishing/exploding gradients. In 1997, a better architecture called Long Short-Term Memory (LSTM) was proposed  with the central idea of "Constant Error Carousal" which enforces constant (thus neither exploding or vanishing) error flow through internal states of special self-connected units <a href="https://www.bioinf.jku.at/publications/older/2604.pdf" title="LSTM paper">1</a>. These "special self-connected units" are also called <em>memory cells</em> because the cell state is decoupled from the output and hidden states connected and thus can be made to persist its state by using special gates (similar to a gated architecture of a transistor).</p>
-<h5 id="forward-pass">Forward Pass</h5>
+<h3>Forward Pass</h3>
 <p>The diagrams and descriptions from <a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" title="Christopher Olah blog on LSTM">2</a> have been used with some modifications for the forward pass of LSTM as they provide a simple, intuitive description.</p>
 <p>As previously stated, the central idea of LSTM is its ability to pass on the error between its states without much change. As can be seen in Figure 1 below, the cell state <em>C~t~</em>  carries the previous state to the next and error from next to previous state does not have many transformations. It is like a "carousal" transporting contents without modification, except as applied by the two linear interactions. </p>
 <p><img alt="" src="/images/LSTM/LSTM Constant error carousal.png" /></p>
@@ -76,7 +77,7 @@ $$</p>
 h_t=o_t*tanh(C_t)
 $$</p>
 <p>where the weights $$[W_f,W_i,W_c,W_o]$$ and biases $$[b_f,b_i,b_c,b_o]$$ are the trainable parameters of LSTM.</p>
-<h5 id="backward-pass-through-time">Backward Pass through Time</h5>
+<h3>Backward Pass through Time</h3>
 <p>Again, the diagram and equations used in <a href="https://christinakouridi.blog/2019/06/19/backpropagation-lstm/" title="LSTM backpropagation">4</a> are heavily referred here. Although the notations used between forward and backward passes are different, the diagrams are intuitive and can be used to easily sync them.</p>
 <p><img alt="" src="/images/LSTM/LSTM backpropogation.png" /></p>
 <p>​                                                                                                   <em>Figure 6 : Back Propagation in LSTM</em></p>
@@ -182,14 +183,14 @@ $$</p>
 \frac{\partial J}{\partial W_{v}} = \sum\limits_{t}^T \frac{\partial J}{\partial W_{v}^t}, \mspace{31mu} W_{v} \pm \alpha * \frac{\partial J}{\partial W_{v}}
 $$</p>
 <p>Similar equations apply for bias parameter updates.</p>
-<h4 id="how-lstm-solves-vanishingexploding-gradient-problem">How LSTM solves vanishing/exploding gradient problem</h4>
+<h2>How LSTM solves vanishing/exploding gradient problem</h2>
 <p>As seen in the RNN article equation 17, the gradients in RNN are unstable because there is iterative matrix multiplication with W~h~ where the matrix may have small or large values. In LSTM, differentiating equation 4 wrt C~t~ from the current time period t to a future time period t', we get 
 $$
 \frac{\partial C_{t'}}{\partial C_t} = \prod_{k=1}^{t' - t} f_{t+k}
 $$
 We also derived a similar equation for $$\frac{\partial J}{\partial c_{t-1}} $$ in equation 31. Both of there show that unlike RNN, LSTM does not have any iterative matrix multiplication that can cause gradients and error to shrink or swell when being passed on between the cell states. One more observation is that the forget gate controls how much of the error and thus gradient will be used to update the previous state. If the forget date is closed, f~t~ = 0 and no error is passed to previous states thus preserving the cell state indefinitely. Conversely, when f~t~=1, the gradient does not decay and is passed to previous states in its entirety. This is what is referred to as the "Constant Error Carousal" in the original LSTM paper <a href="https://www.bioinf.jku.at/publications/older/2604.pdf" title="LSTM paper">1</a> (Note that as forget gate was not part of the original paper, f~t~ was not available to control the error flow).</p>
-<h4 id="key-lstm-variants">Key LSTM variants</h4>
-<h5 id="peepholes">Peepholes</h5>
+<h2>Key LSTM variants</h2>
+<h3>Peepholes</h3>
 <p>Adding peephole connections to all gates from the previous cell state was suggested in the same paper <a href="http://www.felixgers.de/papers/phd.pdf" title="LongShort-Term Memory in Recurrent Neural Networks - Felix Gers">3</a> that introduced forget gates to LSTM. </p>
 <p><img alt="" src="/images/LSTM/LSTM peephole connection.png" /></p>
 <p>​                                                                                                   <em>Figure 7 : Peephole connections in LSTM</em></p>
@@ -203,14 +204,14 @@ $$</p>
 <p>$$
 o_t=\sigma(W_o.[C_t,h_{t-1},x_t]+b_o)
 $$</p>
-<h5 id="coupled-forget-and-input-gates">Coupled Forget and Input Gates</h5>
+<h3>Coupled Forget and Input Gates</h3>
 <p>This modification will only allow the architecture to forget the cell state when there is a corresponding input available. Conversely, the cell only inputs new values when it forgets something from the cell state. For this, in all above equations, we replace i~t~ with (1-f~t~). Specifically, equation 4 above will become 
 $$
 C_t=f_t<em>C_{t-1}+(1-f_t)</em>\tilde{C}_t
 $$
 <img alt="" src="/images/LSTM/LSTM coupled gates.png" /></p>
 <p>​                                                                                              <em>Figure 8 : Coupling forget and input gates in LSTM</em></p>
-<h4 id="gated-recurrent-unit-gru">Gated Recurrent Unit (GRU)</h4>
+<h2>Gated Recurrent Unit (GRU)</h2>
 <p>Gated Recurrent Unit was introduced in 2014 by J Chung et all <a href="https://arxiv.org/pdf/1406.1078.pdf" title="GRU paper">6</a> as a hidden unit in their proposed RNN encoder-decoder architecture.</p>
 <p><img alt="" src="/images/LSTM/GRU.png" /></p>
 <p>​                                                                                           Figure 9 : Gated Recurrent Unit architecture</p>
@@ -238,21 +239,21 @@ $$
 Y_t=Softmax(W_oh_t + b_o)
 $$</p>
 <p>Although GRU is a gated architecture built over RNN and not necessarily derived from LSTM, it has many similarities and differences to LSTM.</p>
-<h6 id="similarities-with-lstm">Similarities with LSTM</h6>
+<h4>Similarities with LSTM</h4>
 <ol>
 <li>Gated architecture</li>
 <li>Constant error flow path</li>
 </ol>
-<h6 id="differences-from-lstm">Differences from LSTM</h6>
+<h4>Differences from LSTM</h4>
 <ol>
 <li>No separate class state, or a output gate making the hidden state always available to the output.</li>
 <li>In LSTM, when calculating the candidate cell state $$\tilde{C}<em>t$$, the input gate does not consider the previous cell state $$C</em>{t-1}$$, rather it independently controls the update to cell state (through the update gate). In GRU, the update gate considers the previous state $$h_{t-1}$$ as input while computing the candidate cell state $$\tilde h_t$$ but does not independently control the amount of candidate cell state added to cell state.</li>
 </ol>
-<h4 id="code-implementation-of-lstm">Code Implementation of LSTM</h4>
-<h5 id="from-scratch-with-tensorflow">From Scratch with TensorFlow</h5>
-<h5 id="using-keras-api">Using Keras API</h5>
-<h4 id="references">References</h4>
-<h4 id="further-reading">Further Reading</h4>
+<h2>Code Implementation of LSTM</h2>
+<h3>From Scratch with TensorFlow</h3>
+<h3>Using Keras API</h3>
+<h2>References</h2>
+<h2>Further Reading</h2>
 <p>In addition to the references, below resources are recommended for further reading on this topic -</p>
 <p>https://d-nb.info/1082034037/34 - RNN, LSTM</p>
 <p>http://arunmallya.github.io/writeups/nn/lstm/index.html#/ - good derivations</p>
