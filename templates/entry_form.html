@@ -1,1 +1,355 @@
+<form class="form-horizontal">
+<fieldset>
 
+<!-- Form Name -->
+<legend>Form Name</legend>
+
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="button1id">Pre-populate form with sample LCA cases</label>
+  <div class="col-md-8">
+    <button id="button1id" name="button1id" class="btn btn-success">Approved case</button>
+    <button id="button2id" name="button2id" class="btn btn-danger">Denied case</button>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="visa_class">Visa Class</label>  
+  <div class="col-md-4">
+  <input id="visa_class" name="visa_class" type="text" placeholder="H-1B" class="form-control input-md" required="">
+  <span class="help-block">Indicates the type of temporary application submitted for processing. Values include H-1B, E-3 Australian, H-1B1 Chile, and H-1B1 Singapore.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="soc_code">SOC Code</label>  
+  <div class="col-md-4">
+  <input id="soc_code" name="soc_code" type="text" placeholder="15-1131.00" class="form-control input-md" required="">
+  <span class="help-block">Occupational code associated with the job being requested for temporary labor condition, as classified by the Standard Occupational Classification (SOC) System.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="soc_title">SOC title</label>  
+  <div class="col-md-4">
+  <input id="soc_title" name="soc_title" type="text" placeholder="Computer Programmers" class="form-control input-md" required="">
+  <span class="help-block">Occupational title associated with the SOC/O*NET Code.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="full_time_position">Full Time Position</label>  
+  <div class="col-md-4">
+  <input id="full_time_position" name="full_time_position" type="text" placeholder="Y" class="form-control input-md" required="">
+  <span class="help-block">Y = Full Time Position; N = Part Time Position.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="begin_date">Begin Date (YYYY-MM-DD)</label>  
+  <div class="col-md-4">
+  <input id="begin_date" name="begin_date" type="text" placeholder="2021-01-01" class="form-control input-md" required="">
+  <span class="help-block">Requested beginning date of the period of employment.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="end_date">End Date (YYYY-MM-DD)</label>  
+  <div class="col-md-4">
+  <input id="end_date" name="end_date" type="text" placeholder="2020-12-31" class="form-control input-md" required="">
+  <span class="help-block">Requested ending date of the period of employment.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="new_employment">New Employment</label>  
+  <div class="col-md-4">
+  <input id="new_employment" name="new_employment" type="text" placeholder="0" class="form-control input-md" required="">
+  <span class="help-block">Indicates requested worker(s) will begin employment for new employer, as defined by USCIS. </span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="continued_employment">Continued Employment</label>  
+  <div class="col-md-4">
+  <input id="continued_employment" name="continued_employment" type="text" placeholder="0" class="form-control input-md" required="">
+  <span class="help-block">Indicates requested worker(s) will be continuing employment with same employer, as defined by USCIS. </span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="change_previous_employment">Change Previous Employment</label>  
+  <div class="col-md-4">
+  <input id="change_previous_employment" name="change_previous_employment" type="text" placeholder="1" class="form-control input-md" required="">
+  <span class="help-block">Indicates requested worker(s) will be continuing employment with same employer without material change to job duties.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="new_concurrent_employment">New Concurrent Employment</label>  
+  <div class="col-md-4">
+  <input id="new_concurrent_employment" name="new_concurrent_employment" type="text" placeholder="0" class="form-control input-md" required="">
+  <span class="help-block">Indicates requested worker(s) will begin employment with an additional employer.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="changed_employer">Changed Employer</label>  
+  <div class="col-md-4">
+  <input id="changed_employer" name="changed_employer" type="text" placeholder="0" class="form-control input-md" required="">
+  <span class="help-block">Indicates requested worker(s) will begin employment for new employer, using the same classification currently held, as defined by USCIS I-29.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="amended_petition">Number of Amended Petition</label>  
+  <div class="col-md-4">
+  <input id="amended_petition" name="amended_petition" type="text" placeholder="0" class="form-control input-md" required="">
+  <span class="help-block">Indicates requested worker(s) will be continuing employment with same employer with material change to job duties, as defined by USCIS I-29. </span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="employer_name">Employer Name</label>  
+  <div class="col-md-4">
+  <input id="employer_name" name="employer_name" type="text" placeholder="AMAZON.COM SERVICES LLC" class="form-control input-md" required="">
+  <span class="help-block">Legal business name of the employer submitting the Labor Condition Application.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="employer_postal_code">Employer Postal Code</label>  
+  <div class="col-md-4">
+  <input id="employer_postal_code" name="employer_postal_code" type="text" placeholder="20850" class="form-control input-md" required="">
+  <span class="help-block">Contact information of the Employer submitting the Labor Condition Application.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="employer_country">Employer Country</label>  
+  <div class="col-md-4">
+  <input id="employer_country" name="employer_country" type="text" placeholder="UNITED STATES OF AMERICA" class="form-control input-md" required="">
+  <span class="help-block">Contact information of the Employer submitting the Labor Condition Application.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="naics_code">NAICS Code</label>  
+  <div class="col-md-4">
+  <input id="naics_code" name="naics_code" type="text" placeholder="541511" class="form-control input-md" required="">
+  <span class="help-block">Industry code associated with the employer submitting the Labor Condition Application, as classified by the North American Industrial Classification System (NAICS). </span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="agent_representing_employer">Agent Representing Employer</label>  
+  <div class="col-md-4">
+  <input id="agent_representing_employer" name="agent_representing_employer" type="text" placeholder="Y" class="form-control input-md" required="">
+  <span class="help-block">Y = Employer is represented by an Agent or Attorney; N = Employer is not represented by an Agent or Attorney.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="worksite_workers">Worksite Workers</label>  
+  <div class="col-md-4">
+  <input id="worksite_workers" name="worksite_workers" type="text" placeholder="1" class="form-control input-md" required="">
+  <span class="help-block">Number of workers placed at the First Worksite location. </span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="secondary_entity">Secondary Entity</label>  
+  <div class="col-md-4">
+  <input id="secondary_entity" name="secondary_entity" type="text" placeholder="Y" class="form-control input-md" required="">
+  <span class="help-block">Y = Workers will be placed with a secondary entity; N = Workers will not be placed with a secondary entity</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="worksite_postal_code">Worksite Postal Code</label>  
+  <div class="col-md-4">
+  <input id="worksite_postal_code" name="worksite_postal_code" type="text" placeholder="95035" class="form-control input-md" required="">
+  <span class="help-block">Geographic Information for First Worksite Location.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Wage_rate_of_pay">Wage Rate of Pay</label>  
+  <div class="col-md-4">
+  <input id="Wage_rate_of_pay" name="Wage_rate_of_pay" type="text" placeholder="50" class="form-control input-md">
+  <span class="help-block">Wage paid to nonimmigrant workers at the First Worksite Location. Unit of pay values include “Hour”, “Week”, “Bi-Weekly”, “Month”, and “Year”</span>  
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="wage_unit_of_pay">Wage Unit of Pay</label>
+  <div class="col-md-4">
+    <select id="wage_unit_of_pay" name="wage_unit_of_pay" class="form-control">
+      <option value="Hour">Hour</option>
+      <option value="Bi-weekly">Bi-weekly</option>
+      <option value="Week">Week</option>
+      <option value="Month">Month</option>
+      <option value="Year">Year</option>
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="prevailing_wage">Prevailing Wage</label>  
+  <div class="col-md-4">
+  <input id="prevailing_wage" name="prevailing_wage" type="text" placeholder="50" class="form-control input-md" required="">
+  <span class="help-block">Prevailing Wage for the job being requested for First Worksite Location. Unit of pay values include “Hour”, “Week”, “Bi-Weekly”, “Month”, and “Year”. </span>  
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="unit_of_pay">PW Unit of Pay</label>
+  <div class="col-md-4">
+    <select id="unit_of_pay" name="unit_of_pay" class="form-control">
+      <option value="Hour">Hour</option>
+      <option value="Bi-weekly">Bi-weekly</option>
+      <option value="Week">Week</option>
+      <option value="Month">Month</option>
+      <option value="Year">Year</option>
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="pw_wage_level">PW Wage Level</label>
+  <div class="col-md-4">
+    <select id="pw_wage_level" name="pw_wage_level" class="form-control">
+      <option value="I">I</option>
+      <option value="II">II</option>
+      <option value="III">III</option>
+      <option value="IV">IV</option>
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="pw_oes_year">PW OES Year</label>  
+  <div class="col-md-4">
+  <input id="pw_oes_year" name="pw_oes_year" type="text" placeholder="7/1/2019 - 6/30/2020" class="form-control input-md">
+  <span class="help-block">The year of the OES Prevailing Wage, if Employer independently determined the OES wage for the First Worksite Location</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="pw_other_source">PW Other Source</label>  
+  <div class="col-md-4">
+  <input id="pw_other_source" name="pw_other_source" type="text" placeholder="" class="form-control input-md">
+  <span class="help-block">*Required if PW OES Year is empty. If Employer determined the Prevailing Wage from another legitimate source for First Worksite Location. Variables include "CBA", "DBA", "SCA", and “Other/PW Survey”</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="pw_other_year">PW Other Year</label>  
+  <div class="col-md-4">
+  <input id="pw_other_year" name="pw_other_year" type="text" placeholder="" class="form-control input-md">
+  <span class="help-block">*Required if PW Other Source is not empty. The year of the other legitimate Prevailing Wage source for the First Worksite Location.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="total_worksite_locations">Total Worksite Locations</label>  
+  <div class="col-md-4">
+  <input id="total_worksite_locations" name="total_worksite_locations" type="text" placeholder="1" class="form-control input-md" required="">
+  <span class="help-block">Total number of worksites </span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="agree_to_lc_statement">Agree to LC statement</label>  
+  <div class="col-md-4">
+  <input id="agree_to_lc_statement" name="agree_to_lc_statement" type="text" placeholder="Y" class="form-control input-md" required="">
+  <span class="help-block">The employer has read and agrees to Labor Condition Statements. Y = The employer agrees. N = The employer does not agree.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="h1b_dependent">H-1B Dependent</label>  
+  <div class="col-md-4">
+  <input id="h1b_dependent" name="h1b_dependent" type="text" placeholder="Y" class="form-control input-md" required="">
+  <span class="help-block">Y = Employer is H-1B Dependent; N = Employer is not H-1B Dependent.</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="wllful_violater">Willful Violater</label>  
+  <div class="col-md-4">
+  <input id="wllful_violater" name="wllful_violater" type="text" placeholder="N" class="form-control input-md" required="">
+  <span class="help-block">Y = Employer has been previously found to be a Willful Violator; N = Employer has not been considered a Willful Violator</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="public_disclosure">Public Disclosure</label>  
+  <div class="col-md-4">
+  <input id="public_disclosure" name="public_disclosure" type="text" placeholder="Disclose Business" class="form-control input-md" required="">
+  <span class="help-block">Location of the required public disclosure information. Valid values include “Disclose Business”, “Disclose Employment”, “Disclose Business and Employment”, or “N/A”. </span>  
+  </div>
+</div>
+
+<!-- Multiple Checkboxes -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="checkboxes">Click to agree</label>
+  <div class="col-md-4">
+  <div class="checkbox">
+    <label for="checkboxes-0">
+      <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
+      I understand and agree that the prediction shall not be construed as immigration or legal advice.
+    </label>
+	</div>
+  <div class="checkbox">
+    <label for="checkboxes-1">
+      <input type="checkbox" name="checkboxes" id="checkboxes-1" value="2">
+      I understand and agree that the use of this tool is voluntary. The tool does not require me to submit any personal data. I assume all risks associated with any data submitted here.
+    </label>
+	</div>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="predict"></label>
+  <div class="col-md-4">
+    <button id="predict" name="predict" class="btn btn-primary">Predict Outcome</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
