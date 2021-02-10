@@ -16,17 +16,9 @@ required_features=mylib.read_csv_to_list('./data/processed/required_features.csv
 def home(): #home page - static webpage
     return render_template('home.html')
 
-@app.route('/FAQ')
-def fair_warning(): #static webpage showing info on the limitations of the tool and terms of use
-    return render_template('terms_of_use.html')
-
-@app.route('/sample_prediction')
-def sample_prediction(): #static webpage explaining how to use the tool
-    return render_template('sample_prediction.html')
-
-@app.route('/user_input',methods=['POST']) 
+@app.route('/user_input') 
 def take_user_input():
-    return render_template('user_input_form.html')
+    return render_template('entry_form.html')
 
 @app.route('/predict',methods=['POST'])     
 def predict():
@@ -39,10 +31,6 @@ def predict():
     y_pred=make_prediction.main(X[0])
 
     return y_pred #render_template('predict_and_explain.html',pred=y_pred)
-
-@app.route('/how_does_it_work')
-def how_does_it_work(): #static webpage explaining how prediction is made
-    return render_template('how_does_it_work.html')
 
 @app.route('/technical_documentation')
 def documentation(): #static webpage that displays autodoc documentation

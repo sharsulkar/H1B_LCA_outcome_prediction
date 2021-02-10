@@ -55,8 +55,8 @@ header {
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
+  width: auto;
+  height: auto;
   overflow: auto;
 }
 
@@ -114,7 +114,7 @@ body {
 
 .contents {
   padding: 25px 450px;
-  max-width: 1200px;
+  max-width: 100%;
   font-size: 1.2em;
   font-family: 'Frank Ruhl Libre', sans-serif;
 

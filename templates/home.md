@@ -1,4 +1,3 @@
-## Predict the outcome of your LCA application accurately in no time  
 ### Welcome!
 Immigrating to a new country can be stressful, especially if it to the Unites States of America, on the highly sought after speciality occupation work visas like H1B. With ever changing regulations, it is important for the employers, immigration attorneys and most importantly, the applicants themselves to be able to predict the outcome of an application as accurately as possible before submitting it.
 

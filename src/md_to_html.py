@@ -14,7 +14,7 @@ def main(md_path):
     return md_toc.toc,html_body
 
 if __name__ == '__main__':
-    md_path='./reports/notes/LSTM.md'
+    md_path='./templates/home.md'
     toc,html_body=main(md_path)
     with open('./templates/home.html', 'w+') as f:
         f.write('{% extends \'base.html\' %}\n')
