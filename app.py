@@ -41,4 +41,5 @@ def contact(): #static webpage that shows contact information
     return render_template('contact.html')
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=3245, debug=True)
+  #app.run(host='0.0.0.0', port=3245, debug=True)
+  app.run()
