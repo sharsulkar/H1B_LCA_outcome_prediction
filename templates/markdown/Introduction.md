@@ -16,10 +16,10 @@ https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Disclosure_Data_FY2021_
 The LCA performance statistics disclosed by OFLC are available here https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/LCA_Selected_Statistics_FY2020.pdf  
 
 Some interesting facts about 2020 LCA application statistics -  
-1. OFLC processed 577,334 applications in FY2020, out of which
-    a. 558,626 (96.7%) were Certified
-    b. 3983 (0.7%) were Denied
-    c. 14725 (2.5%) were Withdrawn
+1. OFLC processed 577,334 applications in FY2020, out of which  
+    a. 558,626 (96.7%) were Certified  
+    b. 3983 (0.7%) were Denied  
+    c. 14725 (2.5%) were Withdrawn  
 
 ## PROJECT OBJECTIVE
 This project will try to model the underlying process of LCA certification and provide solutions to below mentioned aspects of this process -  
