@@ -115,7 +115,8 @@ where q = a - b
 ```
 The complete algorithm to make suggestion is given below -
 ```
-Let y be the predictions of the model for all rows in X_reconstructed_arr where y=0 is confirmed, y=1 is denied, let distance_arr be the array to store the Eucledian distances between two rows.
+Let y be the predictions of the model for all rows in X_reconstructed_arr where y=0 is confirmed, y=1 is denied, let
+distance_arr be the array to store the Eucledian distances between two rows.
 1. if len(y[y==0])>0: (Check if the model predicted any row with outcome as Confirmed.)
     1.1 For each row in X_reconstructed_arr:
         1.1.1 if y==0 (prediction is 'confirmed'):
@@ -137,5 +138,6 @@ Let y be the predictions of the model for all rows in X_reconstructed_arr where 
             wage, continue
             1.3.1.4 else suggest changing the current_value to new_value.
             
-2. if len(y[y==0])=0: Notify the user that no possible combination resulted in a prediction of confirmed application. The model is not useful in making suggestions in this case.
+2. if len(y[y==0])=0: Notify the user that no possible combination resulted in a prediction of confirmed application. 
+The model is not useful in making suggestions in this case.
 ```
