@@ -41,7 +41,8 @@ for our example, cum_prod=[2,4,8,16]
 m=product(len(arr[i]) for i in range(len(arr)))
 for our example, m=16
 
-3. Initialize the grid array with all possible combinations for the first feature. Each valid value in arr[0] will have to be repeated m/cum_prod[0] times. 
+3. Initialize the grid array with all possible combinations for the first feature. 
+Each valid value in arr[0] will have to be repeated m/cum_prod[0] times. 
 grid_arr=arr[0].repeat(m/cum_prod[0])
 For our example, the first row will then be each value in [0,1] repeated m/cum_prod[0] = 8 times, which is
 [0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1]
@@ -57,8 +58,10 @@ For our example, the first row will then be each value in [0,1] repeated m/cum_p
     4.2 To generate the grid correctly, we want to repeat and hstack temp_arr cum_prod[i-1])-1 number of times.
     For j in range(int(cum_prod[i-1])-1)):
         temp_arr=hstack(temp_arr,arr[i]).repeat(m/cum_prod[i]))
-    for example, when i=1, and temp_arr=[0 0 0 0 1 1 1 1], we want to repeat it cum_prod[0]-1 = 1 times and hstack it to temp_arr which gives [0 0 0 0 1 1 1 1 0 0 0 0 1 1 1 1]
-    similarly, when i=2, and temp_arr=[0 0 1 1], we want to repeat it cum_prod[1]-1=3 times and hstack it to temp_arr which gives [0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1], and so on.
+    for example, when i=1, and temp_arr=[0 0 0 0 1 1 1 1], we want to repeat it cum_prod[0]-1 = 1 times and hstack it to
+    temp_arr which gives [0 0 0 0 1 1 1 1 0 0 0 0 1 1 1 1]
+    similarly, when i=2, and temp_arr=[0 0 1 1], we want to repeat it cum_prod[1]-1=3 times and hstack it to temp_arr which
+    gives [0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1], and so on.
     
     4.3 Vstack the temp_arr from previous step to grid_arr
     grid_arr=vstach(grid_arr,temp_arr)
@@ -66,7 +69,8 @@ For our example, the first row will then be each value in [0,1] repeated m/cum_p
     The grid_arr after this step will be [[0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1],[0 0 0 0 1 1 1 1 0 0 0 0 1 1 1 1]].
     Similarly for rest of the iterations.
     
-5. Return the Transposed grid_arr so that number of columns match the number of features and each row is a unique combination of all the features.
+5. Return the Transposed grid_arr so that number of columns match the number of features and each row is a unique combination
+of all the features.
 return grid_arr.T
 For our example, the returned array will be of shape (16,4) with the first few rows looking as below -
 [[0 0 0 0]
@@ -77,10 +81,14 @@ End
 ```
 
 **Step 2 - Generate a full sized array of all features using the grid generated in previous step** -  
-The grid of all possible combinations only generates data for 11 select features. The remaining 20 features that will remain unchanged will be added to the grid in this step.  
+The grid of all possible combinations only generates data for 11 select features. The remaining 20 features that will remain
+unchanged will be added to the grid in this step.  
 To do that, follow the below steps -
 ```
-Let X_denied be a dataframe that contains the original values of 31 features that was used to generate the denied prediction, let grid_arr be the (m,11) shaped array, that holds all possible combinations of the 11 selected features, where m = absolute product of the length of all element in arr, let var_arr be the array that stores the column names for the 11 selected features.
+Let X_denied be a dataframe that contains the original values of 31 features that was used to generate the denied prediction,
+let grid_arr be the (m,11) shaped array, that holds all possible combinations of the 11 selected features, where m = absolute
+product of the length of all element in arr, let var_arr be the array that stores the column names for the 11 selected
+features.
 Then,
 1. Create a new dataframe where X_denied is repeated m times and index are reset inplace -
 X_reconstructed=X_denied.iloc[np.arange(1).repeat(grid_arr.shape[0])].reset_index(drop=True)
@@ -93,9 +101,12 @@ X_reconstructed_arr=preprocess_pipe.transform(X_reconstructed)
 ```
 
 **Step 3 - Generate suggestions to change prediction from Denied to Confirmed** -  
-As noted before, this approach uses the current model to predict outcomes on a grid of all possible values for select features. If a positive prediction is found for one or more rows in the grid, the next task is to find the row that results in the least possible change for the user. For this, we use the weighted Eucledian distance measure to select the best row. 
+As noted before, this approach uses the current model to predict outcomes on a grid of all possible values for select
+features. If a positive prediction is found for one or more rows in the grid, the next task is to find the row that results
+in the least possible change for the user. For this, we use the weighted Eucledian distance measure to select the best row. 
 The weights are hard coded to give preference to changes in some features that are more easier to change than others. 
-In this implementation, out of the 11 selected features listed above, the features that have higher priority and thus larger weight are PW_WAGE_LEVEL, VALIDITY_DAYS and WAGE_ABOVE_PW_HR.  
+In this implementation, out of the 11 selected features listed above, the features that have higher priority and thus larger
+weight are PW_WAGE_LEVEL, VALIDITY_DAYS and WAGE_ABOVE_PW_HR.  
 The weighted Eucledian distance is computed as below -
 ```
 for two 1-d arrays a,b and weights array of same shape
@@ -108,7 +119,10 @@ Let y be the predictions of the model for all rows in X_reconstructed_arr where 
 1. if len(y[y==0])>0: (Check if the model predicted any row with outcome as Confirmed.)
     1.1 For each row in X_reconstructed_arr:
         1.1.1 if y==0 (prediction is 'confirmed'):
-            1.1.1.1 Find the weighted Eucledian distance between the current row in X_reconstructed_arr and the original denied row stored in X_arr.if the distance==0, it means that the current_row in X_reconstructed_arr is the same as the original denied row, in that case, add a offset to the distance to prevent it from being the row with smallest distance. 
+            1.1.1.1 Find the weighted Eucledian distance between the current row in X_reconstructed_arr and the original
+            denied row stored in X_arr.if the distance==0, it means that the current_row in X_reconstructed_arr is the same
+            as the original denied row, in that case, add a offset to the distance to prevent it from being the row with
+            smallest distance. 
             1.1.1.2 Append the distance to distance_arr
     
     1.2 get the index for minimum Eucledian distance and store it in min_change_index
@@ -117,8 +131,10 @@ Let y be the predictions of the model for all rows in X_reconstructed_arr where 
     1.3 For each column in X_arr that is different from the corresponding column in X_reconstructed_arr[min_change_index]:
         1.3.1 Let current_value be X_arr[column], let new_value be X_reconstructed_arr[min_change_index][column]
             1.3.1.1 if current_value is NaN, current_value = 'missing'
-            1.3.1.2 if column name is VALIDITY_DAYS and current_value >=1094, do not make a suggestion to reduce the validity period, continue
-            1.3.1.3 if column name is WAGE_ABOVE_PW_HR and current_value>new_value, do not make suggestion to reduce the wage, continue
+            1.3.1.2 if column name is VALIDITY_DAYS and current_value >=1094, do not make a suggestion to reduce the validity
+            period, continue
+            1.3.1.3 if column name is WAGE_ABOVE_PW_HR and current_value>new_value, do not make suggestion to reduce the
+            wage, continue
             1.3.1.4 else suggest changing the current_value to new_value.
             
 2. if len(y[y==0])=0: Notify the user that no possible combination resulted in a prediction of confirmed application. The model is not useful in making suggestions in this case.
