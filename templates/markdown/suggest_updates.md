@@ -1,18 +1,18 @@
-## SUGGEST CHANGES TO USER APPLICATION TO CHANGE OUTCOME FROM DENIED TO CONFIRMED
+## SUGGEST CHANGES TO USER APPLICATION TO CHANGE OUTCOME FROM DENIED TO CONFIRMED  
 As an applicant to OFLC's LCA programs, a denial prediction can be heart breaking. Keeping aside the slight chance of this being a false prediction, there is nothing more helpful to the applicant that knowing a way to turn the prediction around to *Confirmed*. This tool does just that, for all denial predictions -  
 * the tool will run through all possible combinations of valid values for *select fields* in the application and check if any of the combination results in a prediction to *Confirmed*.  
 * If more than one combination has a positive prediction, the tool will return the combination with least possible changes to the application.  
 
-### APPROACH TO GENERATING SUGGESTIONS
+### APPROACH TO GENERATING SUGGESTIONS  
 There can be many approaches to solve this problem. For instance, one could use clustering algorithms to find the closest training data that has been confirmed and suggest its features to the user. Others might derive the decision boundaries of the model and use that to suggest a baseline levels for each feature values that will result in either outcome.
 While all these are valid approaches, the easiest of them all is to create a grid of all possible valid values of the features and have our trained model predict each row in the grid. Assuming the model has good performance on previously unseen data, this approach yeilds the possible combinations that have a chance of changing the outcome with the least amount of effort as well as memory and processing overhead. 
 The details of how this works has been described below -  
 
-**Step 0 - Enter application details and make prediction** - 
+**Step 0 - Enter application details and make prediction** -   
 The process is triggered when the user enters the application details. The tool runs the application parameters through the preprocess pipeline described earlier and makes a prediction. The prediction can either be a confirmed application or a denied application. If the application is expected to be confirmed, there are no further steps to process and the tool stops there.
 If the application is expected to be denied, below steps are executed in their given order.  
 
-**Step 1 - For denied application, generate a grid of possible valid values for *select features*** -
+**Step 1 - For denied application, generate a grid of possible valid values for *select features*** -  
 The model is trained on and makes predictions based on values in 31 features listed here <enter link>. Out of these, the applicant has some degree of control over what values are entered only on a subset of these 31 features. For instance, the applicant has no control over the Employer Name, SOC Code and title or NAICS code. On the other hand, the application can negotiate changing the wage level, the duration of LCA validity or in some cases, the worksite location.  
 Given this, the grid of valid values generated is only for the features the applicant has some control over. The list of features and the valid values considered are as given below -  
 
@@ -76,8 +76,8 @@ For our example, the returned array will be of shape (16,4) with the first few r
 End
 ```
 
-**Step 2 - Generate a full sized array of all features using the grid generated in previous step** -
-The grid of all possible combinations only generates data for 11 select features. The remaining 20 features that will remain unchanged will be added to the grid in this step.
+**Step 2 - Generate a full sized array of all features using the grid generated in previous step** -  
+The grid of all possible combinations only generates data for 11 select features. The remaining 20 features that will remain unchanged will be added to the grid in this step.  
 To do that, follow the below steps -
 ```
 Let X_denied be a dataframe that contains the original values of 31 features that was used to generate the denied prediction, let grid_arr be the (m,11) shaped array, that holds all possible combinations of the 11 selected features, where m = absolute product of the length of all element in arr, let var_arr be the array that stores the column names for the 11 selected features.
@@ -92,7 +92,7 @@ pd.DataFrame.update(X_reconstructed,pd.DataFrame(grid_arr,columns=var_columns))
 X_reconstructed_arr=preprocess_pipe.transform(X_reconstructed)
 ```
 
-**Step 3 - Generate suggestions to change prediction from Denied to Confirmed** -
+**Step 3 - Generate suggestions to change prediction from Denied to Confirmed** -  
 As noted before, this approach uses the current model to predict outcomes on a grid of all possible values for select features. If a positive prediction is found for one or more rows in the grid, the next task is to find the row that results in the least possible change for the user. For this, we use the weighted Eucledian distance measure to select the best row. 
 The weights are hard coded to give preference to changes in some features that are more easier to change than others. 
 In this implementation, out of the 11 selected features listed above, the features that have higher priority and thus larger weight are PW_WAGE_LEVEL, VALIDITY_DAYS and WAGE_ABOVE_PW_HR.  
