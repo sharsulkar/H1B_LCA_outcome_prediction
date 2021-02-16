@@ -1,7 +1,7 @@
-## RECOMMENDATIONS FROM EXPLORATORY DATA ANALYSIS (EDA)
+## RECOMMENDATIONS FROM EXPLORATORY DATA ANALYSIS 
 Below actionalble recommendations were derived after performing EDA on the training data. They are implemented in the preprocessing pipeline, which is discussed in detail in the next sections.  
-The entire list of recommendations and observations for each source field is available here -   https://raw.githubusercontent.com/sharsulkar/H1B_LCA_outcome_prediction/main/reports/preprocessing_steps_observations.html  
-### RECOMMENDATION FOR PREPROCESSING TASKS -  
+The entire list of recommendations and observations for each source field is available here -    https://raw.githubusercontent.com/sharsulkar/H1B_LCA_outcome_prediction/main/reports/preprocessing_steps_observations.html  
+### RECOMMENDATION FOR PREPROCESSING TASKS   
 1. Reduce Dataframe space by using appropriate datatypes. Only import columns that are required.  
 The list of these columns are available in the Github repository at ./data/processed/required_features.csv.  
 2. The output class is unbalanced. Consider it during training, selecting evaluation metrics.  
@@ -9,7 +9,15 @@ The list of these columns are available in the Github repository at ./data/proce
 4. Cardinality - **Drop columns** that have more than 80% of its total values as unique.  
 5. **Drop rows** that are not with CASE_STATUS Certified or Denied.  
  
-### FEATURE ENGINEERING RECOMMENDATIONS -  
+### POPULATE TASK-SPECIFIC FEATURE LIST
+The below list of columns are an outcome of the EDA observations are persisted in memory in CSV format and will be used for different preprocessing tasks. They are available in the /data/processed/ folder in the code repository.  
+1. **required_features** - list of columns that will be limit which fields from the source data will be imported. The source data consists of 96-100 fields, not all of which are useful.  
+2. **categorical_columns** - list of columns that have been identified as containing categorical datatypes, which include nominal, ordinal and binary.  
+3. **numeric_columns** - list of columns that have been identified as containing numerical data, which include integers, floats and timedelta.  
+4. **drop_columns** - list of columns that have been identified as not needed in the training and prediction operations. They are dropped after the feature engineering step.  
+5. **feature_engineering_columns** - list of columns that will be used to build new features. The list of new features and the computational logic is as given below.  
+
+### FEATURE ENGINEERING RECOMMENDATIONS   
 Generate new features mentioned below from features available in source data.  
 1. **PROCESSING_DAYS**   
 **Computation** days(DECISION_DATE - RECIEVED_DATE)  
@@ -40,5 +48,3 @@ SOC_CODE_ONET=SOC_CODE.split(\'.\')[1];
 8. **SURVEY_YEAR** -  
 **Computation** - if OES_YN ==Y then extract year from first date of PW_OES_YEAR else PW_OTHER_YEAR  
 **Reason** - The year of survey used.  
-
-  
