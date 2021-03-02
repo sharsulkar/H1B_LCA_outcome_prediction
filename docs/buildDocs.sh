@@ -1,3 +1,5 @@
+#!/bin/bash
+set -x
 ################################################################################
 # File:    buildDocs.sh
 # Purpose: Script that builds our documentation using sphinx and updates GitHub
@@ -43,7 +45,8 @@ git config --global user.name "${GITHUB_ACTOR}"
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
  
 docroot=`mktemp -d`
-rsync -av docs/_build/html/ ${docroot}/
+#rsync -a "docs/_build/html/" "${docroot}/"
+rsync -av "html" "${docroot}/"
  
 pushd "${docroot}"
  
