@@ -16,7 +16,7 @@
  
 apt-get update
 apt-get -y install git rsync python3-sphinx python3-sphinx-rtd-theme
-pip install -r requirements.txt
+xargs apt-get install <requirements.txt
  
 #####################
 # DECLARE VARIABLES #
