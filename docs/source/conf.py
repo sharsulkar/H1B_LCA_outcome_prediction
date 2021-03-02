@@ -14,7 +14,7 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../../'))
 
-autodoc_mock_imports = ["numpy","pandas","sklearn","logging","pickle","markdown"]
+autodoc_mock_imports = ["logging","pickle","markdown"]
 print(sys.path)
 
 # -- Project information -----------------------------------------------------
