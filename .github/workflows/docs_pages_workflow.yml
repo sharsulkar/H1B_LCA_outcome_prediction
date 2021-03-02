@@ -1,0 +1,31 @@
+# execute this workflow automatically when a we push to master
+#Authors: Michael Altfield <michael@michaelaltfield.net>
+#For more information on how this documentation is built using Sphinx, Read the Docs, and GitHub Actions/Pages, see: 
+#https://tech.michaelaltfield.net/2020/07/18/sphinx-rtd-github-pages-1
+
+on:
+  push:
+    branches: [ master ]
+ 
+jobs:
+ 
+  build_docs_job:
+    runs-on: ubuntu-latest
+    container: debian:buster-slim
+ 
+    steps:
+ 
+    - name: Prereqs
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        apt-get update
+        apt-get install -y git
+        git clone --depth 1 "https://token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" .
+      shell: bash
+ 
+    - name: Execute script to build our documentation and update pages
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: "docs/buildDocs.sh"
+      shell: bash

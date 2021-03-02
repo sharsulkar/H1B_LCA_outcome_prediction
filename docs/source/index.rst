@@ -3,15 +3,13 @@
 
 Welcome to H1B LCA outcome prediction's documentation!
 ======================================================
-.. automodule:: src.transforms
-   :members:
-
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-
+.. automodule:: transforms
+   :members:
 
 Indices and tables
 ==================
