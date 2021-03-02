@@ -46,7 +46,7 @@ git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
  
 docroot=`mktemp -d`
 #rsync -a "docs/_build/html/" "${docroot}/"
-rsync -av "html" "${docroot}/"
+rsync -av "docs/_build/html/" "${docroot}/"
  
 pushd "${docroot}"
  
