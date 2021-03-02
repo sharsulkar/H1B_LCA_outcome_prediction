@@ -1,8 +1,10 @@
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/sharsulkar/H1B_LCA_outcome_prediction)
 [![codecov](https://codecov.io/gh/sharsulkar/H1B_LCA_outcome_prediction/branch/main/graph/badge.svg?token=JFJP6GZNGC)](https://codecov.io/gh/sharsulkar/H1B_LCA_outcome_prediction)
 
-## Live webapp - https://predict-h1b-lca-outcome.herokuapp.com/
-
+## Live webapp -  
+https://predict-h1b-lca-outcome.herokuapp.com/
+## Documentation -  
+https://sharsulkar.github.io/H1B_LCA_outcome_prediction/
 
 ## Repository Content -
 1. Project Report - /reports/project_report.pdf
