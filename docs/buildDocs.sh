@@ -48,7 +48,7 @@ pwd
 
 docroot=`mktemp -d`
 #rsync -a "docs/_build/html/" "${docroot}/"
-rsync -av "/__w/H1B_LCA_outcome_prediction/H1B_LCA_outcome_prediction/docs/_build/html/" "${docroot}/"
+rsync -av "/__w/H1B_LCA_outcome_prediction/H1B_LCA_outcome_prediction/docs/build/html/" "${docroot}/"
  
 pushd "${docroot}"
  
