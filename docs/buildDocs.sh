@@ -15,8 +15,8 @@
 ###################
  
 apt-get update
-apt-get -y install git rsync python3-sphinx python3-sphinx-rtd-theme 
-apt install python3-pip
+apt-get -y install git rsync python3-sphinx python3-sphinx-rtd-theme python3-pip
+#apt -y install python3-pip
 
 pip3 install requirements.txt
  
