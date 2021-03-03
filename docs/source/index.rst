@@ -8,8 +8,7 @@ Welcome to H1B LCA outcome prediction's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-.. automodule:: src.transforms
-   :members:
+   transforms
 
 Indices and tables
 ==================
