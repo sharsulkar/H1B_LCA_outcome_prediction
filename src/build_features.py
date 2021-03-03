@@ -15,7 +15,21 @@ from mylib import read_csv_to_list
 module_logger= logging.getLogger('my_application.build_features')
 
 def main(input_df, build_feature_pipe=None, all_preprocess=None, method='fit_transform'):
-    
+    """Transforms the source data by applying preprocessing transforms. 
+
+    Args:
+        input_df ([Dataframe]): Unprocessed source data
+        build_feature_pipe (pipeline object, optional): the build_feature_pipe pipeline object, 
+        Required only when method='transform'. Defaults to None.
+        all_preprocess (pipeline object, optional): all_preprocess pipeline object. 
+        Required when method='transform' or 'inverse_transform'.
+         Defaults to None.
+        method (str, optional): The operation performed by build_feature method. Valid values are ['fit','transform','fit_transform','inverse_transform].
+        Defaults to 'fit_transform'.
+
+    Returns:
+        X,y (array): Returns the training data and target variable as arrays
+    """
 
     module_logger.info('Starting to build features module.')
 

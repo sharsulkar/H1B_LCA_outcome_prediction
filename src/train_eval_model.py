@@ -10,7 +10,14 @@ from sklearn.metrics import f1_score, confusion_matrix
 module_logger= logging.getLogger('my_application.train_eval_predict')
 
 def main(model=None,action='train',X=[],y=[]):
+    """Method to train a model or evaluate the trained model.
 
+    Args:
+        model (sklearn model object, optional): The trained model. Required if action='evaluate'. Defaults to None.
+        action (str, optional): Valid values are ['train','evaluate']. Defaults to 'train'.
+        X (list, optional): Preprocessed training or evaluation data. Defaults to [].
+        y (list, optional): Target variable. Defaults to [].
+    """
     if model is None:
         model=AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=100),n_estimators=200,learning_rate=0.1,random_state=10)
     else:

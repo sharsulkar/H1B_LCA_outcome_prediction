@@ -4,6 +4,19 @@ from mylib import read_csv_to_list
 
 module_logger= logging.getLogger('my_application.make_dataset')
 def main(path,file_type='file_list'):
+    """Creates the training dataframe. Only features specified in .data/processed/required_features.csv are imported from the source data.
+
+    Args:
+        path (str): path to the source data file.
+        file_type (str, optional): Valid values are ['file_list','data_file']. 
+        Use 'file_list' if path points to a text file that stored a list of source data file paths.
+        Use 'data_file' if path points to directly to a source data file. 
+        Defaults to 'file_list'.
+
+    Returns:
+        DataFrame: If file_type='file_path', the method iterates over each file and appends the source data to the DataFrame 
+        which is returned, if file_type='data_file', return the source data as a DataFrame.
+    """
 
     module_logger.info('Starting execution of make_dataset module.')
     
