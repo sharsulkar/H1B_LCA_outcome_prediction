@@ -7,6 +7,8 @@ Welcome to H1B LCA outcome prediction's documentation!
 .. toctree::
    :maxdepth: 2
 
+   make_dataset
+   build_features
    transforms
    mylib
-   make_dataset
+   
