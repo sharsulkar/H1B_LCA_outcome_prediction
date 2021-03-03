@@ -8,3 +8,5 @@ Welcome to H1B LCA outcome prediction's documentation!
    :maxdepth: 2
 
    transforms
+   mylib
+   make_dataset
