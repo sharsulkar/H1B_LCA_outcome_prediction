@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Preprocessing pipeline to transform source data &mdash; H1B LCA outcome prediction 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Transforms" href="transforms.html" />
+    <link rel="prev" title="Make training dataset from source data" href="make_dataset.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> H1B LCA outcome prediction
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="make_dataset.html">Make training dataset from source data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Preprocessing pipeline to transform source data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mylib.html">Reusable Functionality</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H1B LCA outcome prediction</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Preprocessing pipeline to transform source data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/build_features.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="preprocessing-pipeline-to-transform-source-data">
+<h1>Preprocessing pipeline to transform source data<a class="headerlink" href="#preprocessing-pipeline-to-transform-source-data" title="Permalink to this headline">¶</a></h1>
+<p>The source data undergoes multiple preprocessing steps before it can be used to train the ML model. The preprocessing steps are listed below -</p>
+<p><strong>1. Drop rows -</strong></p>
+<p>Source data has 4 target classes, we are only interested in the classes [‘Confirmed’,’Denied’].
+The rows in the source data that do not belong to these two classes are dropped in this step.
+The resulting dataframe’s index is also reset.
+Please refer <a class="reference external" href="https://sharsulkar.github.io/H1B_LCA_outcome_predictiontransforms.html#src.transforms.DropRowsTransformer">DropRowsTransformer</a> in the next
+section for more details on implementation of this step.</p>
+<p><strong>2. Feature engineering -</strong></p>
+<p>Based on the exploratory data analysis observations and suggestion, 7 new features are generated using the existing source features.
+The list of existing <a class="reference external" href="https://raw.githubusercontent.com/sharsulkar/H1B_LCA_outcome_prediction/main/data/processed/feature_engineering_columns.csv">source features</a>
+used for building new features is available on github.
+Also please refer <a class="reference external" href="https://sharsulkar.github.io/H1B_LCA_outcome_prediction/transforms.html#src.transforms.BuildFeaturesTransformer">BuildFeaturesTransformer</a>
+in the next section for more details on implementation of this step.</p>
+<p><strong>3. Drop features that are not important for training -</strong></p>
+<p>After the feature engineering step, the redundant features are dropped in this step.
+The list of <a class="reference external" href="https://raw.githubusercontent.com/sharsulkar/H1B_LCA_outcome_prediction/main/data/processed/drop_columns.csv">features</a> that are dropped is
+available on github.
+Also please refer <a class="reference external" href="https://sharsulkar.github.io/H1B_LCA_outcome_prediction/transforms.html#src.transforms.DropFeaturesTransformer">DropFeaturesTransformer</a>
+in the next section for more details on implementation of this step.</p>
+<p><strong>4. Encode categorical features -</strong>
+A custom encoder for categorical features is specially built for this application. The out-of-the-box encoders available in sklearn like label_encoder,
+onehotencoder etc are not sufficient to encode real world data. This custom encoder is better suited for this application because -</p>
+<ol class="loweralpha simple">
+<li>ML models converge much faster during training when the data is centered and scaled. So random standard normal distribution is used to encode categorical values.</li>
+</ol>
+<p>b. The custom encoder stores the categories and their encodings as key-value pairs. This is very helpful when training in batches as the encoding from previous
+batches is not replaced and key-value integrity can be enforced to ensure same numeric encoding is not applied to two different keys.</p>
+<p>The list of <a class="reference external" href="https://raw.githubusercontent.com/sharsulkar/H1B_LCA_outcome_prediction/main/data/processed/categorical_columns.csv">categorical features</a> is
+available on github repo.
+Also please refer <a class="reference external" href="https://sharsulkar.github.io/H1B_LCA_outcome_prediction/transforms.html#src.transforms.RandomStandardEncoderTransformer">RandomStandardEncoderTransformer</a>
+in the next section for more details on implementation of this step.</p>
+<p><strong>5. Impute and scale numeric features -</strong></p>
+<p>The numeric features are first imputed with their median values. Then the numeric features are scaled using a custom built version sklearn’s StandardScaler.
+Custom scaler is needed because the sklearn version computes sample statistics on the training data which is not useful for batch training. The statistics computed for previous batches should not be replaced by future batches. Instead of sample statistics, pooled statistics are used so batch training will incrementally update the mean and variance parameters of the custom scaler.</p>
+<p>The list of <a class="reference external" href="https://raw.githubusercontent.com/sharsulkar/H1B_LCA_outcome_prediction/main/data/processed/numeric_columns.csv">numeric features</a> is available on
+github repo.
+Also please refer <a class="reference external" href="https://sharsulkar.github.io/H1B_LCA_outcome_prediction/transforms.html#src.transforms.CustomStandardScaler">CustomStandardScaler</a> in
+the next section for more details on implementation of this step.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="transforms.html" class="btn btn-neutral float-right" title="Transforms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="make_dataset.html" class="btn btn-neutral float-left" title="Make training dataset from source data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Salil Harsulkar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

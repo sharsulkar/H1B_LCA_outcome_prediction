@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reusable Functionality &mdash; H1B LCA outcome prediction 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Transforms" href="transforms.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> H1B LCA outcome prediction
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="make_dataset.html">Make training dataset from source data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_features.html">Preprocessing pipeline to transform source data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transforms.html">Transforms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reusable Functionality</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H1B LCA outcome prediction</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Reusable Functionality</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/mylib.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="reusable-functionality">
+<h1>Reusable Functionality<a class="headerlink" href="#reusable-functionality" title="Permalink to this headline">¶</a></h1>
+<p>This page documents the reusable functionality used in this application.</p>
+<span class="target" id="module-src.mylib"></span><dl class="function">
+<dt id="src.mylib.cardinality_statistics">
+<code class="descclassname">src.mylib.</code><code class="descname">cardinality_statistics</code><span class="sig-paren">(</span><em>df</em>, <em>column</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mylib.cardinality_statistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the cardinality (measure of uniqueness) for the given column in the given DataFrame</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>df</strong> (<em>DataFrame object</em>) – DataFrame on which the statistics will be calculated</li>
+<li><strong>column</strong> (<em>str</em>) – Column in the DataFrame</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">cardinality of the column</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.mylib.missing_statistics">
+<code class="descclassname">src.mylib.</code><code class="descname">missing_statistics</code><span class="sig-paren">(</span><em>df</em>, <em>column</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mylib.missing_statistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the percent missing values for the given column in the given DataFrame</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>df</strong> (<em>DataFrame object</em>) – DataFrame on which the statistics will be calculated</li>
+<li><strong>column</strong> (<em>str</em>) – Column in the DataFrame</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">percent missing records in the column</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.mylib.modify_observations">
+<code class="descclassname">src.mylib.</code><code class="descname">modify_observations</code><span class="sig-paren">(</span><em>df</em>, <em>index</em>, <em>columns</em>, <em>values</em>, <em>modify_action='update_values'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mylib.modify_observations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to modify a dataframe by inserting new index values or updating existing records.
+This function only supports string labels as indexes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>df</strong> (<em>DataFrame object</em>) – DataFrame to be modified</li>
+<li><strong>index</strong> (<em>list of str</em>) – The list of index labels to be modified</li>
+<li><strong>columns</strong> (<em>list of str</em>) – The list of column labels to be modified</li>
+<li><strong>values</strong> (<em>list</em>) – The list of values to be updated/inserted. The length of values must match the lenght of columns.</li>
+<li><strong>modify_action</strong> (<em>str</em><em>, </em><em>optional</em>) – Modification action to be perfomed. Choose between ‘add_rows’ and ‘update_values’. Defaults to ‘update_values’.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns the modified DataFrame</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.mylib.read_csv_to_list">
+<code class="descclassname">src.mylib.</code><code class="descname">read_csv_to_list</code><span class="sig-paren">(</span><em>filepath</em>, <em>header=None</em>, <em>squeeze=True</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mylib.read_csv_to_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a CSV file into a list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filepath</strong> (<em>str</em>) – CSV file path</li>
+<li><strong>header</strong> (<em>int</em><em>, </em><em>list of int</em><em>, </em><em>optional</em>) – Row number(s) to use as the column names, and the start of the data. Defaults to None.</li>
+<li><strong>squeeze</strong> (<em>bool</em><em>, </em><em>optional</em>) – If the parsed data only contains one column then return a Series. Defaults to True.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of values from CSV file</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="transforms.html" class="btn btn-neutral float-left" title="Transforms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Salil Harsulkar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

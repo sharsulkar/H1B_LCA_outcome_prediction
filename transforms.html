@@ -1,0 +1,729 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Transforms &mdash; H1B LCA outcome prediction 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reusable Functionality" href="mylib.html" />
+    <link rel="prev" title="Preprocessing pipeline to transform source data" href="build_features.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> H1B LCA outcome prediction
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="make_dataset.html">Make training dataset from source data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_features.html">Preprocessing pipeline to transform source data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mylib.html">Reusable Functionality</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H1B LCA outcome prediction</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Transforms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/transforms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="transforms">
+<h1>Transforms<a class="headerlink" href="#transforms" title="Permalink to this headline">¶</a></h1>
+<p>This page documents the custom classes and modules used for preprocessing data before feeding it to the ML model.</p>
+<span class="target" id="module-src.transforms"></span><dl class="class">
+<dt id="src.transforms.BuildFeaturesTransformer">
+<em class="property">class </em><code class="descclassname">src.transforms.</code><code class="descname">BuildFeaturesTransformer</code><span class="sig-paren">(</span><em>input_columns</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.BuildFeaturesTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to build new features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>input_columns</strong> (<em>array</em><em> or </em><em>list</em>) – The columns that will be used as input for building new features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Transformed dataframe with new features added in as columns</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">DataFrame</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="src.transforms.BuildFeaturesTransformer.date_diff">
+<code class="descname">date_diff</code><span class="sig-paren">(</span><em>date1</em>, <em>date2</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.BuildFeaturesTransformer.date_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the difference between two input dates as timedelta.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>date1</strong> (<em>datetime</em>) – A date</li>
+<li><strong>date2</strong> (<em>datetime</em>) – Another date</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">difference between date1 and date2</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">date_difference (timedelta)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.BuildFeaturesTransformer.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.BuildFeaturesTransformer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the class on input dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>pandas DataFrame</em>) – input dataframe</li>
+<li><strong>y</strong> – place holder, defaulted to None</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.BuildFeaturesTransformer.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.BuildFeaturesTransformer.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse transform input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>pandas DataFrame</em>) – input dataframe</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.BuildFeaturesTransformer.is_usa">
+<code class="descname">is_usa</code><span class="sig-paren">(</span><em>country</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.BuildFeaturesTransformer.is_usa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether country is ‘UNITED STATES OF AMERICA’ or not and returns a binary flag</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>country</strong> (<em>str</em>) – country</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">binary flag based on country value</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">USA_YN (str)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.BuildFeaturesTransformer.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.BuildFeaturesTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply transforms on the input dataframe to build new features</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>pandas DataFrame</em>) – input dataframe</li>
+<li><strong>y</strong> – place holder, defaulted to None</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Transformed dataframe with new features added in as columns</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">X</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.transforms.CustomStandardScaler">
+<em class="property">class </em><code class="descclassname">src.transforms.</code><code class="descname">CustomStandardScaler</code><span class="sig-paren">(</span><em>mean=None</em>, <em>var=None</em>, <em>n_samples_seen=None</em>, <em>scale=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.CustomStandardScaler" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to apply standard scaling transform incrementally using pooled mean and variance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mean</strong> (<em>float</em><em> or </em><em>array</em><em> or </em><em>list</em>) – population mean calculated by pooling input sample provided incrementally or in batch mode</li>
+<li><strong>var</strong> (<em>float</em><em> or </em><em>array</em><em> or </em><em>list</em>) – population variance calculated by pooling input sample provided incrementally or in batch mode</li>
+<li><strong>n_samples_seen</strong> (<em>int</em><em> or </em><em>array</em><em> or </em><em>list</em>) – population size calculated by pooling input sample provided incrementally or in batch mode</li>
+<li><strong>scale</strong> (<em>float</em><em> or </em><em>array</em><em> or </em><em>list</em>) – population standard deviation calculated by pooling input sample provided incrementally or in batch mode</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Standard scaled array using population mean and variance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Float or Array</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="src.transforms.CustomStandardScaler.compute_pooled_mean">
+<code class="descname">compute_pooled_mean</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.CustomStandardScaler.compute_pooled_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the pooled mean using the stored mean values and the input array along the column axis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array</em>) – input array</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the computed pooled mean</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float or array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.CustomStandardScaler.compute_pooled_var">
+<code class="descname">compute_pooled_var</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.CustomStandardScaler.compute_pooled_var" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the pooled variance using the stored mean values and the input array along the column axis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array</em>) – input array</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the computed pooled variance</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float or array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.CustomStandardScaler.compute_sample_mean">
+<code class="descname">compute_sample_mean</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.CustomStandardScaler.compute_sample_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the mean of input array along the column axis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array</em>) – input array</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the computed mean</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float or array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.CustomStandardScaler.compute_sample_size">
+<code class="descname">compute_sample_size</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.CustomStandardScaler.compute_sample_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the size of input array</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array</em>) – input array</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the size of input array</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.CustomStandardScaler.compute_sample_var">
+<code class="descname">compute_sample_var</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.CustomStandardScaler.compute_sample_var" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the variance of input array along the column axis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array</em>) – input array</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the computed variance</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float or array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.CustomStandardScaler.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.CustomStandardScaler.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the class on input array</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array</em>) – input array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.CustomStandardScaler.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.CustomStandardScaler.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse  scaling to return the original values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array</em>) – scaled input array</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array with values scaled back to its original scale</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float or array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.CustomStandardScaler.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.CustomStandardScaler.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the scaling transform on the input array.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array</em>) – input array</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array with standard scaled values</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.transforms.DropFeaturesTransformer">
+<em class="property">class </em><code class="descclassname">src.transforms.</code><code class="descname">DropFeaturesTransformer</code><span class="sig-paren">(</span><em>columns</em>, <em>inplace</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.DropFeaturesTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to drop features from a DataFrame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>columns</strong> (<em>array</em><em> or </em><em>list</em>) – A list of columns that should be dropped from the DataFrame.</li>
+<li><strong>inplace</strong> – (binary) : Whether the action should be performed inplace or not, defaulted to True.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Transformed DataFrame</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="src.transforms.DropFeaturesTransformer.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.DropFeaturesTransformer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the class on input dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>pandas DataFrame</em>) – input dataframe</li>
+<li><strong>y</strong> – place holder, defaulted to None</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.DropFeaturesTransformer.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.DropFeaturesTransformer.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse transform input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>pandas DataFrame</em>) – input dataframe</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.DropFeaturesTransformer.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.DropFeaturesTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply transforms on the input dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>pandas DataFrame</em>) – input dataframe</li>
+<li><strong>y</strong> – place holder, defaulted to None</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Transformed dataframe</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">X</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.transforms.DropRowsTransformer">
+<em class="property">class </em><code class="descclassname">src.transforms.</code><code class="descname">DropRowsTransformer</code><a class="headerlink" href="#src.transforms.DropRowsTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to drop rows from a DataFrame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>row_index</strong> (<em>pandas index object</em>) – A list of indexes that should be dropped from the DataFrame.</li>
+<li><strong>inplace</strong> – x (default=True)</li>
+<li><strong>reset_index</strong> – binary (default=True)
+Whether reindexing should be performed after drop action</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="src.transforms.DropRowsTransformer.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.DropRowsTransformer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the class on input dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>pandas DataFrame</em>) – input dataframe</li>
+<li><strong>y</strong> – place holder, defaulted to None</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.DropRowsTransformer.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.DropRowsTransformer.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse transform input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>pandas DataFrame</em>) – input dataframe</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.DropRowsTransformer.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.DropRowsTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply transforms on the input dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>pandas DataFrame</em>) – input dataframe</li>
+<li><strong>y</strong> – place holder, defaulted to None</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Transformed dataframe</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">X</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.transforms.RandomStandardEncoderTransformer">
+<em class="property">class </em><code class="descclassname">src.transforms.</code><code class="descname">RandomStandardEncoderTransformer</code><span class="sig-paren">(</span><em>cat_cols</em>, <em>categories=None</em>, <em>RSE=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.RandomStandardEncoderTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to encode categorical features to numeric using random standard normal encoding</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cat_cols</strong> (<em>array</em><em> or </em><em>list</em>) – Categorical columns in input Dataframe</li>
+<li><strong>categories</strong> (<em>array</em><em> or </em><em>list</em><em>, </em><em>optional</em>) – Array of unique non-numeric values in each categorical column. Defaults to None.</li>
+<li><strong>RSE</strong> (<em>array</em><em> or </em><em>list</em>) – Array of Random Standard encoding for each row in categories. Defaults to None.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Transformed DataFrame</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="src.transforms.RandomStandardEncoderTransformer.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.RandomStandardEncoderTransformer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the numerical encoding for each categorical column</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>pandas DataFrame</em>) – input dataframe</li>
+<li><strong>y</strong> – place holder, defaulted to None</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.RandomStandardEncoderTransformer.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.RandomStandardEncoderTransformer.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply inverse transform to get original values back</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>pandas DataFrame</em>) – input dataframe</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Dataframe with pre transform inputs</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">X</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.transforms.RandomStandardEncoderTransformer.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.transforms.RandomStandardEncoderTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply transforms on the input dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>pandas DataFrame</em>) – input dataframe</li>
+<li><strong>y</strong> – place holder, defaulted to None</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Transformed dataframe</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">X</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mylib.html" class="btn btn-neutral float-right" title="Reusable Functionality" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="build_features.html" class="btn btn-neutral float-left" title="Preprocessing pipeline to transform source data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Salil Harsulkar
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
